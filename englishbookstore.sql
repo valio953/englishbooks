@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2017 at 03:39 AM
+-- Generation Time: May 18, 2017 at 04:08 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -40,7 +40,7 @@ CREATE TABLE `authors` (
 CREATE TABLE `authors_books` (
   `ab_id` int(11) NOT NULL,
   `ab_author` int(11) NOT NULL,
-  `ab_book` int(11) NOT NULL
+  `ab_book` bigint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
