@@ -63,28 +63,36 @@
 		</section>
 
 		<section id="search-bar-admin">
-			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search books by ISBN..">
 		</section>
 
 		<section id="books-table">
 			<table id="myTable">
 			  <tr class="header">
-			    <th style="width:60%;">Name</th>
-			    <th style="width:40%;">Country</th>
+					<th style="width:20%;">ISBN</th>
+					<th style="width:25%;">Title</th>
+					<th style="width:25%;">Author</th>
+					<th style="width:10%;">Price</th>
+			    <th style="width:10%;">Reserved</th>
+			    <th style="width:10%;">Delete</th>
 			  </tr>
 			  <tr>
+					<td>000000123</td>
 			    <td>Alfreds Futterkiste</td>
 			    <td>Germany</td>
 			  </tr>
 			  <tr>
+					<td>123456789</td>
 			    <td>Berglunds snabbkop</td>
 			    <td>Sweden</td>
 			  </tr>
 			  <tr>
+					<td>123456789</td>
 			    <td>Island Trading</td>
 			    <td>UK</td>
 			  </tr>
 			  <tr>
+					<td>123456789</td>
 			    <td>Koniglich Essen</td>
 			    <td>Germany</td>
 			  </tr>
