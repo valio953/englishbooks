@@ -1,12 +1,15 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #F5F5F5;
+  font-family: 'Roboto', sans-serif;
 }
 
 /*ADMIN-NAVBAR*/
 #admin-navbar {
-  height: 3rem;
-  background-color: red;
+  height: 4rem;
+  background-color: #1E1344;
+  font-size: 18px;
 }
 .align-right {
   float: right;
@@ -19,6 +22,10 @@ body {
 .nav a {
   text-decoration: none;
   display: block;
+  color: #f1f1f1;
+}
+.nav a:hover {
+  color: #fff;
 }
 .nav li {
   display: inline-block;
@@ -26,7 +33,75 @@ body {
   padding-top: 0.25rem;
 }
 
+.log-out-btn {
+  float: right;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  background-color: #E5A5A0;
+  color: #f1f1f1;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: 2px solid #E5A5A0;
+  border-radius: 5px;
+}
+
+.log-out-btn:hover {
+    color: #1E1344;
+}
+
 /*ADD NEW BOOK*/
+
+.new-book-btn {
+  float: right;
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #4DA6AD;
+  border: none;
+  color: #f1f1f1;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 1rem 2rem;
+  padding: 0.5rem;
+}
+
+.new-book-btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.new-book-btn span:after {
+  content: '\002b';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  transition: 0.5s;
+}
+
+.new-book-btn:hover span {
+  padding-right: 25px;
+}
+
+.new-book-btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+#search-bar-admin {
+  margin: 0 2rem;
+}
+#books-table {
+  margin: 0 2rem;
+}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -44,17 +119,15 @@ body {
 /* Modal Header */
 .add-book-modal-header {
     padding: 2px 16px;
-    background-color: green;
-    color: white;
+    background-color: #1E1344;
+    color: #f1f1f1;
     text-align: center;
+    font-family: 'Quicksand', sans-serif;
 }
 /* Modal Body */
-.add-book-modal-body {padding: 2px 16px;}
-/* Modal Footer */
-.add-book-modal-footer {
-    padding: 2px 16px;
-    background-color: green;
-    color: white;
+.add-book-modal-body {
+  padding: 2px 16px;
+  background-color: #F5F5F5;
 }
 /* Modal Content */
 .add-book-modal-content {
@@ -81,26 +154,33 @@ body {
 }
 /* The Close Button */
 .close {
-    color: #aaaaaa;
+    color: #f1f1f1;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 .close:hover,
 .close:focus {
-    color: #000;
+    color: #fff;
     text-decoration: none;
     cursor: pointer;
 }
+
+#isbn-input {
+  border-radius: 5px;
+}
+
 /* CATEGORIES BUTTON */
 /* Dropdown Button */
 .dropbtn {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #fff;
+  color: #8e8e8e;
   padding: 8px;
   font-size: 16px;
-  border: none;
+  border: 2px;
   cursor: pointer;
+  border-radius: 5px;
+  border-color: #5e5e5e;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -137,26 +217,65 @@ body {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+    background-color: #f1f1f1;
+}
+
+.add-btn {
+    position: relative;
+    background-color: #4DA6AD;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #FFFFFF;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.add-btn:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.add-btn:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
 }
 
 /* BOOKS TABLE */
 #myInput {
-    background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+    background-image: url('../img/searchicon.png'); /* Add a search icon to input */
     background-position: 10px 12px; /* Position the search icon */
     background-repeat: no-repeat; /* Do not repeat the icon image */
-    width: 100%; /* Full-width */
+    width: 99.7%; /* Full-width */
     font-size: 16px; /* Increase font-size */
     padding: 12px 0px 12px 0px; /* Add some padding */
-    border: 1px solid #ddd; /* Add a grey border */
-    margin-bottom: 12px; /* Add some space below the input */
+    border: 2px solid #f1f1f1; /* Add a grey border */
+    /*margin-bottom: 12px; /* Add some space below the input */
+    text-indent: 40px;
 }
 
 #myTable {
     border-collapse: collapse; /* Collapse borders */
     width: 100%; /* Full-width */
     border: 1px solid #ddd; /* Add a grey border */
-    font-size: 18px; /* Increase font-size */
+    font-size: 16px; /* Increase font-size */
+    background-color: #fff;
 }
 
 #myTable th, #myTable td {
@@ -171,5 +290,18 @@ body {
 
 #myTable tr.header, #myTable tr:hover {
     /* Add a grey background color to the table header and on hover */
-    background-color: #f1f1f1;
+    background-color: #E5A5A0;
+    color:#fff;
+}
+
+/*FOOTER*/
+#admin-footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: #f1f1f1;
+  background-color: #1F2532;
+  text-align: center;
+  line-height: 50%;
 }

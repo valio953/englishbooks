@@ -3,6 +3,8 @@
 <head>
 	<title>English Bookstore - Admin page </title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 </head>
 
 <body>
@@ -11,8 +13,8 @@
 		<section id="admin-navbar">
 			<article class="nav">
 				<ul>
-					<li><a href="storefront.php">ADD LOGO</a></li>
-					<button id="log-out-btn" class="align-right">Log out</button>
+					<li><a href="storefront.php"><img src="img/logo-white.png"></a></li>
+					<button class="log-out-btn">Log out</button>
 					<li class="align-right"><a href="storefront.php">Go to storefront</a></li>
 				</ul>
 			</article>
@@ -23,22 +25,19 @@
 
 		<section id="add-new-book">
 			<!-- Trigger/Open The Modal -->
-			<button id="add-book-btn" class="align-right">Add a new book</button>
+			<button id="add-book-btn" class="new-book-btn"><span>Add a new book</span></button>
 			<!-- The Modal -->
 			<article id="add-book-modal" class="modal">
 			  <!-- Modal content -->
 			  <article class="add-book-modal-content">
 					<article class="add-book-modal-header">
 				    <span class="close">&times;</span>
-				    <h2>Add a new book</h2>
+				    <h3>Add a new book</h3>
 				  </article>
 				  <article class="add-book-modal-body">
-				    <h3>ISBN</h3>
-						<input type="text" placeholder="Enter ISBN" />
+						<input id="isbn-input" type="text" placeholder="Enter ISBN" />
 						<button id="scan-isbn-btn">Scan ISBN</button>
-						<h3>Price</h3>
 						<input type="text" placeholder="Enter amount" /> <span>Kr.</span>
-						<h3>Category</h3>
 						<article class="dropdown">
 						  <button class="dropbtn">Choose category</button>
 						  <article class="dropdown-content">
@@ -54,9 +53,9 @@
 						  </article>
 						</article>
 						<button id="check-book-btn">Check</button>
-						<p>Showing book title and author from Goodreads API</p>
-						<button id="add-book-btn">Add</button>
 						<button id="reset-btn">Reset</button>
+						<p>Showing book title and author from Goodreads API</p>
+						<button class="add-btn">ADD BOOK</button>
 				  </article>
 			  </article>
 			</article>
@@ -80,27 +79,46 @@
 					<td>000000123</td>
 			    <td>Alfreds Futterkiste</td>
 			    <td>Germany</td>
+					<td>50</td>
+					<td>check</td>
+					<td>trash</td>
 			  </tr>
 			  <tr>
 					<td>123456789</td>
 			    <td>Berglunds snabbkop</td>
 			    <td>Sweden</td>
+					<td>50</td>
+					<td>check</td>
+					<td>trash</td>
 			  </tr>
 			  <tr>
 					<td>123456789</td>
 			    <td>Island Trading</td>
 			    <td>UK</td>
+					<td>50</td>
+					<td>check</td>
+					<td>trash</td>
 			  </tr>
 			  <tr>
 					<td>123456789</td>
 			    <td>Koniglich Essen</td>
 			    <td>Germany</td>
+					<td>50</td>
+					<td>check</td>
+					<td>trash</td>
 			  </tr>
 			</table>
 		</section>
 	</main>
-	<footer>
 
+	<footer>
+		<section id="admin-footer">
+			<p>Frederiks Allé 53, 8000 Aarhus C</p>
+			<p>52 90 28 35</p>
+			<p>books@stofanet.dk</p>
+			<p>Wednesday to Friday - 2:30 PM to 5:30 PM</p>
+			<p>Saturday - 11:00 AM to 1:30 PM </p>
+		</section>
 	</footer>
 
 	<script type="text/javascript" src="js/script.js"></script>
