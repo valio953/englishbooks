@@ -108,7 +108,7 @@ for($i=0; $i<count($get_all_books); $i++)
 	</footer>
 
 	<script type="text/javascript" src="js/script.js"></script>
-	<script src="js/books.js" type="text/javascript"></script>
+	<script src="js/books.js" type="text/javascript"></script>	
 
 </body>
 </html>
