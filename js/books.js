@@ -2,9 +2,7 @@
     /* Admin function to check ISBN is returning the correct book */
     checkISBN: function()
     {
-        var test_isbn = "9781847670700";
         var isbn = document.getElementById("input_isbn").value;
-        console.log(isbn);
         
         // checking the book with AJAX to avoid refreshing the page
         var xhttp = new XMLHttpRequest();
@@ -23,7 +21,7 @@
     addBook: function()
     {
         var isbn = document.getElementById("input_isbn").value;
-        console.log(isbn);
+        var price = document.getElementById("input_price").value;
         
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -31,7 +29,7 @@
             document.getElementById("p_result").innerHTML = response;
         };
         
-        xhttp.open("GET", "includes/receiver.php?req=add_book&isbn=" + isbn, true);
+        xhttp.open("GET", "includes/receiver.php?req=add_book&isbn=" + isbn + "&price=" + price, true);
         xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
         xhttp.send();
     }

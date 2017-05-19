@@ -1,3 +1,20 @@
+<?php
+
+include_once (dirname (__FILE__) . '/includes/Books.php');
+$books = new Books();
+$get_all_books = $books->admin_get_books();
+
+$table_content = '';
+for($i=0; $i<count($get_all_books); $i++)
+{
+	$table_content .= 	'<tr>
+							<td>' . $get_all_books[$i]['book_isbn'] . '</td>
+							<td>' . $get_all_books[$i]['book_title'] . '</td>
+							<td>' . $get_all_books[$i]['book_author'] . '</td>
+							<td>' . $get_all_books[$i]['book_price'] . '</td>
+						</tr>';
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,9 +52,9 @@
 				    <h3>Add a new book</h3>
 				  </article>
 				  <article class="add-book-modal-body">
-						<input id="isbn-input" type="text" placeholder="Enter ISBN" />
+						<input id="input_isbn" type="text" placeholder="Enter ISBN" />
 						<button id="scan-isbn-btn">Scan ISBN</button>
-						<input type="text" placeholder="Enter amount" /> <span>Kr.</span>
+						<input type="text" id="input_price" placeholder="Enter amount" /> <span>Kr.</span>
 						<article class="dropdown">
 						  <button class="dropbtn">Choose category</button>
 						  <article class="dropdown-content">
@@ -52,10 +69,10 @@
 								<a href="#">Sports</a>
 						  </article>
 						</article>
-						<button id="check-book-btn">Check</button>
+						<button id="check-book-btn" onclick="books.checkISBN();">Check</button>
 						<button id="reset-btn">Reset</button>
-						<p>Showing book title and author from Goodreads API</p>
-						<button class="add-btn">ADD BOOK</button>
+						<p id="p_result">Showing book title and author from Goodreads API</p>
+						<button class="add-btn" onclick="books.addBook();">ADD BOOK</button>
 				  </article>
 			  </article>
 			</article>
@@ -75,38 +92,7 @@
 			    <th style="width:10%;">Reserved</th>
 			    <th style="width:10%;">Delete</th>
 			  </tr>
-			  <tr>
-					<td>000000123</td>
-			    <td>Alfreds Futterkiste</td>
-			    <td>Germany</td>
-					<td>50</td>
-					<td>check</td>
-					<td>trash</td>
-			  </tr>
-			  <tr>
-					<td>123456789</td>
-			    <td>Berglunds snabbkop</td>
-			    <td>Sweden</td>
-					<td>50</td>
-					<td>check</td>
-					<td>trash</td>
-			  </tr>
-			  <tr>
-					<td>123456789</td>
-			    <td>Island Trading</td>
-			    <td>UK</td>
-					<td>50</td>
-					<td>check</td>
-					<td>trash</td>
-			  </tr>
-			  <tr>
-					<td>123456789</td>
-			    <td>Koniglich Essen</td>
-			    <td>Germany</td>
-					<td>50</td>
-					<td>check</td>
-					<td>trash</td>
-			  </tr>
+			  <?php echo $table_content;?>
 			</table>
 		</section>
 	</main>
@@ -122,6 +108,7 @@
 	</footer>
 
 	<script type="text/javascript" src="js/script.js"></script>
+	<script src="js/books.js" type="text/javascript"></script>
 
 </body>
 </html>
