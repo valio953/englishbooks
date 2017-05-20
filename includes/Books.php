@@ -52,6 +52,7 @@ class Books {
         // GoodReads API app key
         $GRkey = "cdNKGwcNSIFRq8lIqPQW8Q";
         $isbn = $params["isbn"];
+        $price = $params["price"];
         
         $grapi_src = file_get_contents("https://www.goodreads.com/book/isbn/" . $isbn . "?key=" . $GRkey);
 
@@ -74,6 +75,7 @@ class Books {
                 book_title,
                 book_description,
                 book_img,
+                book_price,
                 book_regdate
               )
             VALUES
@@ -83,6 +85,7 @@ class Books {
                 :title,
                 :description,
                 :img,
+                :price,
                 NOW()
             )
         ');
@@ -90,7 +93,8 @@ class Books {
             ":isbn" => $isbn,
             ":title" => $btitle,
             ":description" => $bdescription,
-            ":img" => $bimg
+            ":img" => $bimg,
+            ":price" => $price
         ));
         
         $rst_addauthor = $this->dbh->prepare('
@@ -124,12 +128,89 @@ class Books {
                 :book
             )
         ');
-        $rst_connect_book_authors->execute(array(
+        $rst_connect_authors_book->execute(array(
             ":author" => $bauthor_gr_id,
             ":book" => $isbn
         ));
         
         return "success";
+    }
+    
+    public function admin_get_books() {
+        $rst_get_books = $this->dbh->prepare('
+            SELECT
+                book_isbn,
+                book_quantity,
+                book_category,
+                book_title,
+                book_description,
+                book_img,
+                book_reserved,
+                book_reservation_date,
+                book_reservation_name,
+                book_price
+            FROM
+                books
+            WHERE
+                1
+        ');
+        $rst_get_books->execute();
+        $books = $rst_get_books->fetchAll(PDO::FETCH_ASSOC);
+        
+        $i = 0;
+        foreach($books as $book) {
+            //var_dump($book["book_isbn"]); die;
+            $book_isbn = $book["book_isbn"];
+            
+            $rst_get_author = $this->dbh->prepare('
+                SELECT
+                    authors.author_name AS author_name,
+                    ab_book
+                FROM
+                    authors_books
+                    LEFT JOIN authors ON authors.author_gr_id = authors_books.ab_author
+                WHERE
+                    ab_book=:book_isbn
+            ');
+            $rst_get_author->execute(array(":book_isbn" => $book_isbn));
+            $authors = $rst_get_author->fetchAll(PDO::FETCH_ASSOC);
+            $count_bookauthors = count($authors);
+            if($count_bookauthors > 1)
+            {
+                $author_name = "";
+                for($an=0; $an<$count_bookauthors; $an++)
+                {
+                    if($an == ($count_bookauthors - 1))
+                    {
+                        $author_name .= $authors[$an]["author_name"];
+                    }
+                    else {
+                        $author_name .= $authors[$an]["author_name"] . ", ";
+                    }
+                }
+                $books[$i]["book_author"] = $author_name;
+            }
+            else {
+                $author_name = $authors[0]["author_name"];
+                $books[$i]["book_author"] = $author_name;
+            }
+            $i++;
+        }
+        
+        $rst_get_author = $this->dbh->prepare('
+            SELECT
+                authors.author_name AS author_name,
+                ab_book
+            FROM
+                authors_books
+                LEFT JOIN authors ON authors.author_gr_id = authors_books.ab_author
+            WHERE
+                1
+        ');
+        $rst_get_author->execute();
+        $authors = $rst_get_author->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $books;
     }
     
 }
