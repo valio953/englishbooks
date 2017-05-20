@@ -11,7 +11,7 @@ for($i=0; $i<count($get_all_books); $i++)
 							<td>' . $get_all_books[$i]['book_isbn'] . '</td>
 							<td>' . $get_all_books[$i]['book_title'] . '</td>
 							<td>' . $get_all_books[$i]['book_author'] . '</td>
-							<td>' . $get_all_books[$i]['book_price'] . '</td>
+							<td>' . $get_all_books[$i]['book_price'] . ' Kr.</td>
 							<td><i class="fa fa-circle-o"></i></td>
 							<td><i class="fa fa-trash-o"></i></td>
 						</tr>';
@@ -86,7 +86,7 @@ for($i=0; $i<count($get_all_books); $i++)
 		</section>
 
 		<section id="search-bar-admin">
-			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search books by ISBN">
+			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search books by title">
 		</section>
 
 		<section id="books-table">
