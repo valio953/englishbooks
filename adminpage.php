@@ -35,27 +35,32 @@
 				    <h3>Add a new book</h3>
 				  </article>
 				  <article class="add-book-modal-body">
-						<input id="isbn-input" type="text" placeholder="Enter ISBN" />
-						<button id="scan-isbn-btn">Scan ISBN</button> <br/>
-						<input id="price-input" type="text" placeholder="Enter price" /> <br/>
-						<article class="dropdown">
-						  <button class="dropbtn">Choose category</button>
-						  <article class="dropdown-content">
-						    <a href="#">Action & Adventure</a>
-						    <a href="#">Business</a>
-						    <a href="#">Cooking</a>
-								<a href="#">DIY</a>
-								<a href="#">Health & Fitness</a>
-								<a href="#">Romance</a>
-								<a href="#">Travel</a>
-								<a href="#">Sci-fi</a>
-								<a href="#">Sports</a>
-						  </article>
-						</article> <br/>
-						<button id="check-book-btn">Check book</button>
-						<button id="reset-btn">Reset</button>
-						<p>Showing book title and author from Goodreads API</p>
-						<button class="add-btn">ADD BOOK</button>
+						<article id="add-book-form">
+							<input id="isbn-input" type="text" placeholder="Enter ISBN" />
+							<button id="scan-isbn-btn">SCAN ISBN</button>
+							<input id="price-input" type="text" placeholder="Enter price" /> </br>
+							<article class="dropdown">
+								<button class="dropbtn">Choose category</button>
+								<article class="dropdown-content">
+									<a href="#">Action & Adventure</a>
+									<a href="#">Business</a>
+									<a href="#">Cooking</a>
+									<a href="#">DIY</a>
+									<a href="#">Health & Fitness</a>
+									<a href="#">Romance</a>
+									<a href="#">Travel</a>
+									<a href="#">Sci-fi</a>
+									<a href="#">Sports</a>
+								</article>
+							</article>
+							</br>
+							<button id="check-book-btn">CHECK BOOK</button>
+							<button id="reset-btn">RESET</button>
+						</article>
+						<article id="add-book-confirm">
+							<p>Showing book title and author from Goodreads API</p>
+							<button class="add-btn">ADD BOOK</button>
+						</article>
 				  </article>
 			  </article>
 			</article>
