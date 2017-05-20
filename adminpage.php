@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 </head>
 
 <body>
@@ -79,8 +80,8 @@
 			    <td>Alfreds Futterkiste</td>
 			    <td>Germany</td>
 					<td>50</td>
-					<td>check</td>
-					<td>trash</td>
+					<td><i class="fa fa-circle-o"></i></td>
+					<td><i class="fa fa-trash-o"></i></td>
 			  </tr>
 			  <tr>
 					<td>123456789</td>
@@ -112,11 +113,17 @@
 
 	<footer>
 		<section id="admin-footer">
-			<p>Frederiks Allé 53, 8000 Aarhus C</p>
-			<p>52 90 28 35</p>
-			<p>books@stofanet.dk</p>
-			<p>Wednesday to Friday - 2:30 PM to 5:30 PM</p>
-			<p>Saturday - 11:00 AM to 1:30 PM </p>
+			<article id="bookstore-details">
+				<p><i class="fa fa-map-marker"></i> Frederiks Allé 53, 8000 Aarhus C</p>
+				<p><i class="fa fa-phone"></i> 52 90 28 35</p>
+				<p><i class="fa fa-envelope"></i> books@stofanet.dk</p>
+			</article>
+			<article id="opening-hours">
+				<p><i class="fa fa-clock-o"></i> Opening hours</p>
+				<p>Wed, Thu, Fri <strong>2:30 PM to 5:30 PM</strong></p>
+				<p>Sat <strong>11:00 AM to 1:30 PM</strong></p>
+				<p>Sun, Mon <strong>CLOSED</strong></p>
+			</article>
 		</section>
 	</footer>
 

@@ -356,6 +356,10 @@ body {
     background-color: #fff;
 }
 
+#myTable i {
+  font-size: 1.2rem;
+}
+
 #myTable th, #myTable td {
     text-align: left; /* Left-align text */
     padding: 12px; /* Add padding */
@@ -384,6 +388,18 @@ body {
   left: 0;
   color: #f1f1f1;
   background-color: #1F2532;
-  text-align: center;
   line-height: 50%;
+  display: flex;
+  font-size: 0.7rem;
+}
+
+#bookstore-details {
+  width: 50%;
+  text-align: right;
+  padding-right: 1rem;
+}
+
+#opening-hours {
+  width: 50%;
+  padding-left: 1rem;
 }
