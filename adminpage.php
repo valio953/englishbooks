@@ -13,16 +13,15 @@
 		<section id="admin-navbar">
 			<article class="nav">
 				<ul>
-					<li><a href="storefront.php"><img src="img/logo-white.png"></a></li>
-					<button class="log-out-btn">Log out</button>
-					<li class="align-right"><a href="storefront.php">Go to storefront</a></li>
+					<li><a href="storefront.php"><img  id="logo-image" src="img/logo-white.png"></a></li>
+					<li class="align-right"><button class="log-out-btn">Log out</button>
+					<li id="storefront-link"><a href="storefront.php">Go to storefront</a></li>
 				</ul>
 			</article>
 		</section>
 	</header>
 
 	<main>
-
 		<section id="add-new-book">
 			<!-- Trigger/Open The Modal -->
 			<button id="add-book-btn" class="new-book-btn"><span>Add a new book</span></button>
@@ -36,8 +35,8 @@
 				  </article>
 				  <article class="add-book-modal-body">
 						<input id="isbn-input" type="text" placeholder="Enter ISBN" />
-						<button id="scan-isbn-btn">Scan ISBN</button>
-						<input type="text" placeholder="Enter amount" /> <span>Kr.</span>
+						<button id="scan-isbn-btn">Scan ISBN</button> <br/>
+						<input id="price-input" type="text" placeholder="Enter price" /> <br/>
 						<article class="dropdown">
 						  <button class="dropbtn">Choose category</button>
 						  <article class="dropdown-content">
@@ -51,8 +50,8 @@
 								<a href="#">Sci-fi</a>
 								<a href="#">Sports</a>
 						  </article>
-						</article>
-						<button id="check-book-btn">Check</button>
+						</article> <br/>
+						<button id="check-book-btn">Check book</button>
 						<button id="reset-btn">Reset</button>
 						<p>Showing book title and author from Goodreads API</p>
 						<button class="add-btn">ADD BOOK</button>
@@ -62,7 +61,7 @@
 		</section>
 
 		<section id="search-bar-admin">
-			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search books by ISBN..">
+			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search books by ISBN">
 		</section>
 
 		<section id="books-table">
