@@ -1,3 +1,22 @@
+<?php
+
+include_once (dirname (__FILE__) . '/includes/Books.php');
+$books = new Books();
+$get_all_books = $books->admin_get_books();
+
+$table_content = '';
+for($i=0; $i<count($get_all_books); $i++)
+{
+	$table_content .= 	'<tr>
+							<td>' . $get_all_books[$i]['book_isbn'] . '</td>
+							<td>' . $get_all_books[$i]['book_title'] . '</td>
+							<td>' . $get_all_books[$i]['book_author'] . '</td>
+							<td>' . $get_all_books[$i]['book_price'] . '</td>
+							<td><i class="fa fa-circle-o"></i></td>
+							<td><i class="fa fa-trash-o"></i></td>
+						</tr>';
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,9 +55,9 @@
 				  </article>
 				  <article class="add-book-modal-body">
 						<article id="add-book-form">
-							<input id="isbn-input" type="text" placeholder="Enter ISBN" />
+							<input id="input_isbn" type="text" placeholder="Enter ISBN" />
 							<button id="scan-isbn-btn">SCAN ISBN</button>
-							<input id="price-input" type="text" placeholder="Enter price" /> </br>
+							<input id="input_price" type="text" placeholder="Enter price" /> </br>
 							<article class="dropdown">
 								<button class="dropbtn">Choose category</button>
 								<article class="dropdown-content">
@@ -54,12 +73,12 @@
 								</article>
 							</article>
 							</br>
-							<button id="check-book-btn">CHECK BOOK</button>
+							<button id="check-book-btn" onclick="books.checkISBN();">CHECK BOOK</button>
 							<button id="reset-btn">RESET</button>
 						</article>
 						<article id="add-book-confirm">
-							<p>Showing book title and author from Goodreads API</p>
-							<button class="add-btn">ADD BOOK</button>
+							<p id="p_result">Showing book title and author from Goodreads API</p>
+							<button class="add-btn" onclick="books.addBook();">ADD BOOK</button>
 						</article>
 				  </article>
 			  </article>
@@ -80,38 +99,7 @@
 			    <th style="width:10%;">Reserved</th>
 			    <th style="width:10%;">Delete</th>
 			  </tr>
-			  <tr>
-					<td>000000123</td>
-			    <td>Alfreds Futterkiste</td>
-			    <td>Germany</td>
-					<td>50</td>
-					<td><i class="fa fa-circle-o"></i></td>
-					<td><i class="fa fa-trash-o"></i></td>
-			  </tr>
-			  <tr>
-					<td>123456789</td>
-			    <td>Berglunds snabbkop</td>
-			    <td>Sweden</td>
-					<td>50</td>
-					<td>check</td>
-					<td>trash</td>
-			  </tr>
-			  <tr>
-					<td>123456789</td>
-			    <td>Island Trading</td>
-			    <td>UK</td>
-					<td>50</td>
-					<td>check</td>
-					<td>trash</td>
-			  </tr>
-			  <tr>
-					<td>123456789</td>
-			    <td>Koniglich Essen</td>
-			    <td>Germany</td>
-					<td>50</td>
-					<td>check</td>
-					<td>trash</td>
-			  </tr>
+				<?php echo $table_content;?>
 			</table>
 		</section>
 	</main>
@@ -133,6 +121,7 @@
 	</footer>
 
 	<script type="text/javascript" src="js/script.js"></script>
+	<script src="js/books.js" type="text/javascript"></script>
 
 </body>
 </html>

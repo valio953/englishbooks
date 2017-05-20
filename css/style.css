@@ -249,7 +249,7 @@ body {
     cursor: pointer;
 }
 
-#isbn-input {
+#input_isbn {
   width: 72%;
   font-family: 'Roboto', sans-serif;
   border-radius: 5px;
@@ -276,7 +276,7 @@ body {
   margin-left: 0.5rem;
 }
 
-#price-input {
+#input_price {
   width: 72%;
   font-family: 'Roboto', sans-serif;
   border-radius: 5px;
