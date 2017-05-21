@@ -175,6 +175,7 @@ body {
     color:#fff;
 }
 
+/* Admin FOOTER*/
 #admin-footer {
   position: absolute;
   right: 0;
@@ -477,4 +478,14 @@ body {
   width:25%;
 }
 .login-btn {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #4DA6AD;
+  color: #f1f1f1;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
