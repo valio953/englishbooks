@@ -136,7 +136,7 @@ class Books {
         return "success";
     }
     
-    public function admin_get_books() {
+    public function get_books() {
         $rst_get_books = $this->dbh->prepare('
             SELECT
                 book_isbn,
@@ -197,20 +197,11 @@ class Books {
             $i++;
         }
         
-        $rst_get_author = $this->dbh->prepare('
-            SELECT
-                authors.author_name AS author_name,
-                ab_book
-            FROM
-                authors_books
-                LEFT JOIN authors ON authors.author_gr_id = authors_books.ab_author
-            WHERE
-                1
-        ');
-        $rst_get_author->execute();
-        $authors = $rst_get_author->fetchAll(PDO::FETCH_ASSOC);
-        
         return $books;
     }
+    
+    
+    /* User script */
+    
     
 }
