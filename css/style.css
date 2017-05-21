@@ -12,6 +12,8 @@ body {
 }
 .nav-link {
   float:right;
+  margin-top: 1.2rem;
+  /*font-size: 1rem;*/
 }
 /*ADMIN-NAVBAR*/
 #admin-navbar {
@@ -50,7 +52,7 @@ body {
 #storefront-link {
   float: right;
   margin-top: 1.2rem;
-  font-size: 1rem;
+  /*font-size: 1rem;*/
 }
 
 .log-out-btn {
@@ -427,4 +429,16 @@ body {
     margin: 0;
     opacity: 1;
     transition: 0s
+}
+
+/*BOOKS */
+
+.book-card {
+  width: 18%;
+  background-color: rgb(255, 255, 255); /* White - Fall-back for browsers that don't
+                                  support rgba */
+  background-color: rgba(255, 255, 255, .8); /*White with opacity*/
+}
+.book-cover {
+  width:16%;
 }
