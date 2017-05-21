@@ -1,3 +1,7 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
 body {
   margin: 0;
   padding: 0;
@@ -171,7 +175,6 @@ body {
     color:#fff;
 }
 
-/*FOOTER*/
 #admin-footer {
   position: absolute;
   right: 0;
@@ -441,4 +444,37 @@ body {
 }
 .book-cover {
   width:16%;
+}
+
+
+/*Storefront FOOTER */
+#storefront-footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    color: #f1f1f1;
+    background-color: #1F2532;
+    line-height: 50%;
+    display: flex;
+    font-size: 0.7rem;
+    /*overflow:visible;*/
+}
+#fb-stf {
+  width:25%;
+  text-align: right;
+}
+#bookstore-details-stf {
+  width: 25%;
+  text-align: right;
+  padding-right: 1rem;
+}
+#opening-hours-stf {
+  width: 25%;
+  padding-left: 1rem;
+}
+#login-stf {
+  width:25%;
+}
+.login-btn {
 }

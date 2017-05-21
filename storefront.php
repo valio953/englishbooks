@@ -83,6 +83,28 @@ for($i=0; $i<count($get_all_books); $i++)
 
   </main>
 
+	<footer>
+		<section id="storefront-footer">
+			<article id="fb-stf">
+				<p>facebook</p>
+			</article>
+			<article id="bookstore-details-stf">
+				<p><i class="fa fa-map-marker"></i> Frederiks Allé 53, 8000 Aarhus C</p>
+				<p><i class="fa fa-phone"></i> 52 90 28 35</p>
+				<p><i class="fa fa-envelope"></i> books@stofanet.dk</p>
+			</article>
+			<article id="opening-hours-stf">
+				<p><i class="fa fa-clock-o"></i> Opening hours</p>
+				<p>Wed, Thu, Fri <strong>2:30 PM to 5:30 PM</strong></p>
+				<p>Sat <strong>11:00 AM to 1:30 PM</strong></p>
+				<p>Sun, Mon <strong>CLOSED</strong></p>
+			</article>
+			<article id="login-stf">
+				<button class="login-btn">Login as admin</button>
+			</article>
+		</section>
+	</footer>
+
   <script src="js/books.js" type="text/javascript"></script>
 
 </body>
