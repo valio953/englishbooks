@@ -12,18 +12,17 @@ body {
 #navbar {
   height: 4rem;
   background-color: #1E1344;
-  font-size: 18px;
+  font-size: 16px;
 }
 .nav-link {
   float:right;
   margin-top: 1.2rem;
-  /*font-size: 1rem;*/
 }
 /*ADMIN-NAVBAR*/
 #admin-navbar {
   height: 4rem;
   background-color: #1E1344;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .align-right {
@@ -56,13 +55,12 @@ body {
 #storefront-link {
   float: right;
   margin-top: 1.2rem;
-  /*font-size: 1rem;*/
 }
 
 .log-out-btn {
   float: right;
   font-family: 'Roboto', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   background-color: #E5A5A0;
   color: #f1f1f1;
   text-align: center;
