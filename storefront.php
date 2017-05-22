@@ -2,6 +2,7 @@
 
 include_once (dirname (__FILE__) . '/includes/Books.php');
 $books = new Books();
+
 $get_all_books = $books->get_books();
 
 $book_cards_from_db = '';
@@ -9,12 +10,14 @@ for($i=0; $i<count($get_all_books); $i++)
 {
 	$book_cards_from_db .= 	'<article class="book-card">
 										<img class="book-cover" src="' . $get_all_books[$i]['book_img'] . '">
-										<p>' . $get_all_books[$i]['book_title'] .'</p>
-										<p>' . $get_all_books[$i]['book_author'] .'</p>
-										<p>' . $get_all_books[$i]['book_price'] .' Kr.</p>
+										<p class="b-title">' . $get_all_books[$i]['book_title'] .'</p>
+										<p class="b-author">' . $get_all_books[$i]['book_author'] .'</p>
+										<article class="b-price-reserve">
+										<p class="b-price">' . $get_all_books[$i]['book_price'] .' Kr.</p>
 										<button id="add-book-btn-' . $get_all_books[$i]['book_isbn'] .'" class="reserve-btn">
 											<span>Reserve</span>
 										</button>
+										</article>
 										<!-- The Modal -->
 										<article id="add-book-modal-' . $get_all_books[$i]['book_isbn'] .'" class="modal">
 											<!-- Modal content -->

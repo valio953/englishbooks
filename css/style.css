@@ -1,3 +1,7 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
 body {
   margin: 0;
   padding: 0;
@@ -8,16 +12,17 @@ body {
 #navbar {
   height: 4rem;
   background-color: #1E1344;
-  font-size: 18px;
+  font-size: 16px;
 }
 .nav-link {
   float:right;
+  margin-top: 1.2rem;
 }
 /*ADMIN-NAVBAR*/
 #admin-navbar {
   height: 4rem;
   background-color: #1E1344;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .align-right {
@@ -38,7 +43,7 @@ body {
 }
 .nav li {
   display: inline-block;
-  margin-right: 0.5rem;
+  margin-right: 2rem;
   padding-top: 0.25rem;
 }
 
@@ -50,13 +55,12 @@ body {
 #storefront-link {
   float: right;
   margin-top: 1.2rem;
-  font-size: 1rem;
 }
 
 .log-out-btn {
   float: right;
   font-family: 'Roboto', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   background-color: #E5A5A0;
   color: #f1f1f1;
   text-align: center;
@@ -169,7 +173,7 @@ body {
     color:#fff;
 }
 
-/*FOOTER*/
+/* Admin FOOTER*/
 #admin-footer {
   position: absolute;
   right: 0;
@@ -427,4 +431,193 @@ body {
     margin: 0;
     opacity: 1;
     transition: 0s
+}
+
+
+/*-----STOREFRONT STYLING-----*/
+.section-title {
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+}
+
+#latest-books {
+  background-color: #4DA6AD;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+/*Recommendations section*/
+#recommend {
+  background-color: #E5A5A0;
+  margin: 0;
+  padding: 0.5rem 0;
+  color: #FFF;
+  text-align: center;
+}
+
+.recommend-btn {
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #4DA6AD;
+  border: none;
+  color: #f1f1f1;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 1rem 2rem;
+  padding: 0.5rem 2rem;
+}
+
+.recommend-btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.recommend-btn span:before {
+  font-family: FontAwesome;
+  content: "\f118";
+  /*position: absolute;*/
+  opacity: 0;
+  top: 0;
+  transition: 0.5s;
+}
+
+.recommend-btn span:after {
+  font-family: FontAwesome;
+  content: "\f118";
+  /*position: absolute;*/
+  opacity: 0;
+  top: 0;
+  transition: 0.5s;
+}
+
+.recommend-btn:hover span {
+  padding-right: 25px;
+  padding-left:25px;
+}
+
+.recommend-btn:hover span:before {
+  opacity: 1;
+  left: 0;
+  margin-right: 1rem;
+}
+
+.recommend-btn:hover span:after {
+  opacity: 1;
+  right: 0;
+  margin-left: 1rem;
+}
+
+/*Browse books section*/
+.browse-books-content {
+  display: flex;
+}
+
+#categories {
+  width: 20%;
+}
+
+#categories h3 {
+  font-family: 'Quicksand', sans-serif;
+  padding: 0 2rem 1rem 2rem;
+  margin: 0;
+}
+
+#categories p {
+  padding: 0.2rem 2rem;
+  margin: 0;
+}
+
+#browse-book-cards {
+  width: 80%;
+}
+
+#book-cards {
+  display: flex;
+  /*overflow-y: scroll;*/
+}
+
+#storefront-book-search {
+    background-image: url('../img/searchicon.png');
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 98%;
+    font-size: 16px;
+    padding: 12px 0px;
+    border: 2px solid #f1f1f1;
+    text-indent: 40px;
+}
+
+/*BOOKS */
+
+.book-card {
+  width: 20%;
+  background-color: rgb(255, 255, 255); /* White - Fall-back for browsers that don't support rgba */
+  background-color: rgba(255, 255, 255, .8); /*White with opacity*/
+}
+
+.book-cover {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  width:  100px;
+  height: 150px;
+  background-position: 50% 50%;
+  background-repeat:   no-repeat;
+  background-size:     cover;
+}
+.b-price-reserve {
+  display:flex;
+  line-height: 10%;
+}
+.b-price {
+  width:50%;
+}
+.reserve-btn {
+  width: 50%;
+}
+/*Storefront footer*/
+#storefront-footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    color: #f1f1f1;
+    background-color: #1F2532;
+    line-height: 50%;
+    display: flex;
+    font-size: 0.7rem;
+    /*overflow:visible;*/
+}
+#fb-stf {
+  width:25%;
+  text-align: right;
+}
+#bookstore-details-stf {
+  width: 25%;
+  text-align: right;
+  padding-right: 1rem;
+}
+#opening-hours-stf {
+  width: 25%;
+  padding-left: 1rem;
+}
+#login-stf {
+  width:25%;
+}
+.login-btn {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #4DA6AD;
+  color: #f1f1f1;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
