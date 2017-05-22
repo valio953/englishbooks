@@ -2,7 +2,7 @@
 
 include_once (dirname (__FILE__) . '/includes/Books.php');
 $books = new Books();
-$get_all_books = $books->admin_get_books();
+$get_all_books = $books->get_books();
 
 $book_cards_from_db = '';
 for($i=0; $i<count($get_all_books); $i++)
