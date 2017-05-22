@@ -76,14 +76,49 @@ for($i=0; $i<count($get_all_books); $i++)
 	</header>
 
 	<main>
+
+		<section id="latest-books">
+			<h2 class="section-title">Latest Books</h2>
+		</section>
+
+		<section id="recommend">
+			<h3 class="section-title"> Not sure what book to read next? Try one of our recommendations based on your facial emotion.</h3>
+			<button class="recommend-btn"><span>Get a recommendation</span></button>
+		</section>
+
 		<section id="browse-books">
-			<h2>Browse books</h2>
-			<?php echo $book_cards_from_db;?>
-	</section>
+			<h2 class="section-title">Browse books</h2>
+			<acticle class="browse-books-content">
+				<acticle id="categories">
+					<h3>Categories</h3>
+					<p>All</p>
+					<p>Sci-fi</p>
+					<p>Business</p>
+					<p>Romance</p>
+					<p>Travel</p>
+					<p>Cooking</p>
+					<p>Health & Fitness</p>
+					<p>Action & Adventure</p>
+					<p>DIY</p>
+				</acticle>
+				<acticle id="browse-book-cards">
+					<article id="search-bar-storefront">
+						<input type="text" id="storefront-book-search" placeholder="Search books by title">
+					</article>
+					<article id="book-cards">
+						<?php echo $book_cards_from_db;?>
+					</article>
+				</acticle>
+			</acticle>
+		</section>
+
+		<section id="request-book">
+			<h2 class="section-title">Request a book</h2>
+		</section>
 
   </main>
 
-	<footer>
+	<!-- <footer>
 		<section id="storefront-footer">
 			<article id="fb-stf">
 				<p>facebook</p>
@@ -103,7 +138,7 @@ for($i=0; $i<count($get_all_books); $i++)
 				<button class="login-btn">Login as admin</button>
 			</article>
 		</section>
-	</footer>
+	</footer> -->
 
   <script src="js/books.js" type="text/javascript"></script>
 

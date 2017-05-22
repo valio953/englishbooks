@@ -43,7 +43,7 @@ body {
 }
 .nav li {
   display: inline-block;
-  margin-right: 0.5rem;
+  margin-right: 2rem;
   padding-top: 0.25rem;
 }
 
@@ -433,20 +433,120 @@ body {
     transition: 0s
 }
 
+
+/*-----STOREFRONT STYLING-----*/
+.section-title {
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+}
+
+#latest-books {
+  background-color: #4DA6AD;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+/*Recommendations section*/
+#recommend {
+  background-color: #E5A5A0;
+  margin: 0;
+  padding: 0.5rem 0;
+  color: #FFF;
+}
+
+.recommend-btn {
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #4DA6AD;
+  border: none;
+  color: #f1f1f1;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 1rem 2rem;
+  padding: 0.5rem 2rem;
+}
+
+.recommend-btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.recommend-btn span:after {
+  font-family: FontAwesome;
+  content: "\f118";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  transition: 0.5s;
+}
+
+.recommend-btn:hover span {
+  padding-right: 25px;
+}
+
+.recommend-btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/*Browse books section*/
+.browse-books-content {
+  display: flex;
+}
+
+#categories {
+  width: 20%;
+}
+
+#categories h3 {
+  font-family: 'Quicksand', sans-serif;
+  padding: 0 2rem 1rem 2rem;
+  margin: 0;
+}
+
+#categories p {
+  padding: 0.2rem 2rem;
+  margin: 0;
+}
+
+#browse-book-cards {
+  width: 80%;
+}
+
+#book-cards {
+  display: flex;
+  /*overflow-y: scroll;*/
+}
+
+#storefront-book-search {
+    background-image: url('../img/searchicon.png');
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 98%;
+    font-size: 16px;
+    padding: 12px 0px;
+    border: 2px solid #f1f1f1;
+    text-indent: 40px;
+}
+
 /*BOOKS */
 
 .book-card {
-  width: 18%;
-  background-color: rgb(255, 255, 255); /* White - Fall-back for browsers that don't
-                                  support rgba */
+  width: 50%;
+  background-color: rgb(255, 255, 255); /* White - Fall-back for browsers that don't support rgba */
   background-color: rgba(255, 255, 255, .8); /*White with opacity*/
 }
+
 .book-cover {
-  width:16%;
+  /*width:16%;*/
 }
 
-
-/*Storefront FOOTER */
+/*Storefront footer*/
 #storefront-footer {
     position: absolute;
     right: 0;
