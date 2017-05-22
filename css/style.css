@@ -452,6 +452,7 @@ body {
   margin: 0;
   padding: 0.5rem 0;
   color: #FFF;
+  text-align: center;
 }
 
 .recommend-btn {
@@ -476,10 +477,19 @@ body {
   transition: 0.5s;
 }
 
+.recommend-btn span:before {
+  font-family: FontAwesome;
+  content: "\f118";
+  /*position: absolute;*/
+  opacity: 0;
+  top: 0;
+  transition: 0.5s;
+}
+
 .recommend-btn span:after {
   font-family: FontAwesome;
   content: "\f118";
-  position: absolute;
+  /*position: absolute;*/
   opacity: 0;
   top: 0;
   transition: 0.5s;
@@ -487,11 +497,19 @@ body {
 
 .recommend-btn:hover span {
   padding-right: 25px;
+  padding-left:25px;
+}
+
+.recommend-btn:hover span:before {
+  opacity: 1;
+  left: 0;
+  margin-right: 1rem;
 }
 
 .recommend-btn:hover span:after {
   opacity: 1;
   right: 0;
+  margin-left: 1rem;
 }
 
 /*Browse books section*/
@@ -537,15 +555,31 @@ body {
 /*BOOKS */
 
 .book-card {
-  width: 50%;
+  width: 20%;
   background-color: rgb(255, 255, 255); /* White - Fall-back for browsers that don't support rgba */
   background-color: rgba(255, 255, 255, .8); /*White with opacity*/
 }
 
 .book-cover {
-  /*width:16%;*/
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  width:  100px;
+  height: 150px;
+  background-position: 50% 50%;
+  background-repeat:   no-repeat;
+  background-size:     cover;
 }
-
+.b-price-reserve {
+  display:flex;
+  line-height: 10%;
+}
+.b-price {
+  width:50%;
+}
+.reserve-btn {
+  width: 50%;
+}
 /*Storefront footer*/
 #storefront-footer {
     position: absolute;
