@@ -1,21 +1,21 @@
 <?php
 
-include_once (dirname (__FILE__) . '/includes/Books.php');
-$books = new Books();
-$get_all_books = $books->admin_get_books();
-
-$table_content = '';
-for($i=0; $i<count($get_all_books); $i++)
-{
-	$table_content .= 	'<tr>
-							<td>' . $get_all_books[$i]['book_isbn'] . '</td>
-							<td>' . $get_all_books[$i]['book_title'] . '</td>
-							<td>' . $get_all_books[$i]['book_author'] . '</td>
-							<td>' . $get_all_books[$i]['book_price'] . ' Kr.</td>
-							<td><i class="fa fa-circle-o"></i></td>
-							<td><i class="fa fa-trash-o"></i></td>
-						</tr>';
-}
+//include_once (dirname (__FILE__) . '/includes/Books.php');
+//$books = new Books();
+//$get_all_books = $books->admin_get_books();
+//
+//$table_content = '';
+//for($i=0; $i<count($get_all_books); $i++)
+//{
+//	$table_content .= 	'<tr>
+//							<td>' . $get_all_books[$i]['book_isbn'] . '</td>
+//							<td>' . $get_all_books[$i]['book_title'] . '</td>
+//							<td>' . $get_all_books[$i]['book_author'] . '</td>
+//							<td>' . $get_all_books[$i]['book_price'] . ' Kr.</td>
+//							<td><i class="fa fa-circle-o"></i></td>
+//							<td><i class="fa fa-trash-o"></i></td>
+//						</tr>';
+//}
 ?>
 <!DOCTYPE html>
 <html>
@@ -122,6 +122,11 @@ for($i=0; $i<count($get_all_books); $i++)
 
 	<script type="text/javascript" src="js/script.js"></script>
 	<script src="js/books.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", function(event) { 
+			books.getBooks();
+		});
+	</script>
 
 </body>
 </html>

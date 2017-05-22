@@ -1,4 +1,21 @@
 ﻿var books = {
+    getBooks: function()
+    {
+        var searchstring = document.getElementById("input_search").value;
+        console.log(searchstring);
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            var response = this.responseText;
+            var parse_response = JSON.parse(response);
+            console.log(parse_response);
+            //document.getElementById("p_result").innerHTML = parse_response.title + " by " + parse_response.author;
+        };
+        
+        xhttp.open("GET", "includes/receiver.php?req=get_books&searchstring=" + searchstring, true);
+        xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+        xhttp.send();
+    },
+    
     /* Admin function to check ISBN is returning the correct book */
     checkISBN: function()
     {

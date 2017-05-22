@@ -136,7 +136,7 @@ class Books {
         return "success";
     }
     
-    public function admin_get_books() {
+    public function get_books() {
         $rst_get_books = $this->dbh->prepare('
             SELECT
                 book_isbn,
