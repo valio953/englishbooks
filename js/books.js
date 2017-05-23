@@ -38,17 +38,17 @@ var books = {
                 document.getElementById("myTable").innerHTML = adminTableSrc;
             }
         };
-        
+
         xhttp.open("GET", "includes/receiver.php?req=get_books", true);
         xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
         xhttp.send();
     },
-    
+
     /* Admin function to check ISBN is returning the correct book */
     checkISBN: function()
     {
         var isbn = document.getElementById("input_isbn").value;
-        
+
         // checking the book with AJAX to avoid refreshing the page
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -58,19 +58,19 @@ var books = {
                 document.getElementById("p_result").innerHTML = parse_response.title + " by " + parse_response.author;
             }
         };
-        
+
         xhttp.open("GET", "includes/receiver.php?req=check_book&isbn=" + isbn, true);
         xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
         xhttp.send();
     },
-    
+
     /* JS function for sending data to the server for adding a book to the DB. Data send with AJAX */
     addBook: function()
     {
         var isbn = document.getElementById("input_isbn").value;
         var category = document.getElementById("input_categoryid").value;
         var price = document.getElementById("input_price").value;
-        
+
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -86,7 +86,7 @@ var books = {
         xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
         xhttp.send();
     },
-    
+
     removeBook: function(isbn)
     {
         var xhttp = new XMLHttpRequest();
@@ -99,7 +99,7 @@ var books = {
         xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
         xhttp.send();
 	},
-    
+
     /* USER */
     getBooks: function()
     {
@@ -109,15 +109,15 @@ var books = {
             if (this.readyState == 4 && this.status == 200) {
                 var response = this.responseText;
                 var parse_response = JSON.parse(response);
-                
+
                 for(i=0; i<parse_response.length; i++){
                     bookCardsSrc += '<article class="book-card">';
 					bookCardsSrc += '					<img class="book-cover" src="' + parse_response[i].book_img + '">';
 					bookCardsSrc += '					<p class="b-title">' + parse_response[i].book_title + '</p>';
-					bookCardsSrc += '					<p class="b-author">' + parse_response[i].book_author + '</p>';
+					bookCardsSrc += '					<p class="b-author">by ' + parse_response[i].book_author + '</p>';
 					bookCardsSrc += '					<article class="b-price-reserve">';
 					bookCardsSrc += '					    <p class="b-price">' + parse_response[i].book_price + ' Kr.</p>';
-					bookCardsSrc += '					    <button onclick="displayBlock(' + parse_response[i].book_isbn + ');" id="add-book-btn-' + parse_response[i].book_isbn + '" class="btn-trigger-rmodal">';
+					bookCardsSrc += '					    <button onclick="displayBlock(' + parse_response[i].book_isbn + ');" id="add-book-btn-' + parse_response[i].book_isbn + '" class="reserve-btn">';
 					bookCardsSrc += '						    <span>Reserve</span>';
 					bookCardsSrc += '					    </button>';
 					bookCardsSrc += '					</article>';
@@ -140,15 +140,15 @@ var books = {
 					bookCardsSrc += '</article>';
                 }
                 document.getElementById("book-cards").innerHTML = bookCardsSrc;
-                
+
             }
         };
-        
+
         xhttp.open("GET", "includes/receiver.php?req=get_books", true);
         xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
         xhttp.send();
     },
-    
+
     reserveBook: function(isbn)
     {
         console.log(isbn);
@@ -163,12 +163,12 @@ var books = {
                 //document.getElementById("p_result").innerHTML = response;
             }
         };
-        
+
         xhttp.open("POST", "includes/receiver.php?req=reserve_book&isbn=" + isbn + "&rname=" + encodeURIComponent(reservationName) + "&remail=" + encodeURIComponent(reservationEmail), true);
         xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
         xhttp.send();
     },
-    
+
     getCategories: function()
     {
         var bookCardsSrc = '', i;
@@ -178,7 +178,7 @@ var books = {
                 var response = this.responseText;
                 var parse_response = JSON.parse(response);
                 console.log(parse_response);
-                
+
 //                for(i=0; i<parse_response.length; i++){
 //                    bookCardsSrc += '<article class="book-card">';
 //					bookCardsSrc += '							<p>You are about to reserve: ' + parse_response[i].book_title + '</p>';
@@ -186,10 +186,10 @@ var books = {
 //					bookCardsSrc += '</article>';
 //                }
                 //document.getElementById("book-cards").innerHTML = bookCardsSrc;
-                
+
             }
         };
-        
+
         xhttp.open("GET", "includes/receiver.php?req=get_categories", true);
         xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
         xhttp.send();
