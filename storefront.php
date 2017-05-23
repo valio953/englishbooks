@@ -83,6 +83,12 @@
 
 		<section id="latest-books">
 			<h2 class="section-title">Latest Books</h2>
+			<p>dada</p>
+			<p>dada</p>
+			<p>dada</p>
+			<p>dada</p>
+			<p>dada</p>
+
 		</section>
 
 		<section id="recommend">
@@ -118,11 +124,18 @@
 
 		<section id="request-book">
 			<h2 class="section-title">Request a book</h2>
+			<p>Can't find what you were loooking for?</p>
+			<p>Send us a message with the details of the book and we will get it for you!</p>
+			<input id="req-form-name" type="text" placeholder="Enter your name" class="req-form"/> <br/>
+			<input id="req-form-email" type="text" placeholder="Enter your email" class="req-form"/> <br/>
+			<input id="req-form-title" type="text" placeholder="Enter the book title" class="req-form"/> <br/>
+			<input id="req-form-author" type="text" placeholder="Enter the book author" class="req-form"/> <br/>
+			<button>Send request</button>
 		</section>
 
   </main>
 
-	<!-- <footer>
+  <footer>
 		<section id="storefront-footer">
 			<article id="fb-stf">
 				<p>facebook</p>
@@ -142,7 +155,7 @@
 				<button class="login-btn">Login as admin</button>
 			</article>
 		</section>
-	</footer> -->
+	</footer>
 
 	<script src="js/books.js" type="text/javascript"></script>
 	<script type="text/javascript">
