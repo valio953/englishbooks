@@ -59,6 +59,7 @@ class Books {
         // GoodReads API app key
         $GRkey = "cdNKGwcNSIFRq8lIqPQW8Q";
         $isbn = $params["isbn"];
+        $bcategory = $params["category"];
         $price = $params["price"];
         
         $grapi_src = file_get_contents("https://www.goodreads.com/book/isbn/" . $isbn . "?key=" . $GRkey);
@@ -88,7 +89,7 @@ class Books {
             VALUES
             (
                 :isbn,
-                5,
+                :category,
                 :title,
                 :description,
                 :img,
@@ -98,6 +99,7 @@ class Books {
         ');
         $rst_addbook->execute(array(
             ":isbn" => $isbn,
+            ":category" => $bcategory,
             ":title" => $btitle,
             ":description" => $bdescription,
             ":img" => $bimg,
@@ -206,6 +208,21 @@ class Books {
         }
         
         return $books;
+    }
+    
+    public function get_categories($params = null)
+    {
+        $rst_get_categories = $this->dbh->prepare('
+            SELECT
+                category_id,
+                category_name
+            FROM
+                categories
+        ');
+        $rst_get_categories->execute();
+        $categories = $rst_get_categories->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $categories;
     }
     
     public function admin_remove_book($params)

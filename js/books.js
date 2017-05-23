@@ -68,6 +68,7 @@ var books = {
     addBook: function()
     {
         var isbn = document.getElementById("input_isbn").value;
+        var category = document.getElementById("input_categoryid").value;
         var price = document.getElementById("input_price").value;
         
         var xhttp = new XMLHttpRequest();
@@ -75,14 +76,13 @@ var books = {
             if (this.readyState == 4 && this.status == 200) {
                 var response = this.responseText;
                 var parse_response = JSON.parse(response);
-                console.log(parse_response);
                 if (parse_response === true) {
                     document.getElementById("p_result").innerHTML = "You added new book successfully!";
                     setInterval(function(){books.adminGetBooks();},3000);
                 }
             }
         };
-        xhttp.open("GET", "includes/receiver.php?req=add_book&isbn=" + isbn + "&price=" + price, true);
+        xhttp.open("GET", "includes/receiver.php?req=add_book&isbn=" + isbn + "&category=" + category + "&price=" + price, true);
         xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
         xhttp.send();
     },
@@ -109,7 +109,6 @@ var books = {
             if (this.readyState == 4 && this.status == 200) {
                 var response = this.responseText;
                 var parse_response = JSON.parse(response);
-                console.log(parse_response);
                 
                 for(i=0; i<parse_response.length; i++){
                     bookCardsSrc += '<article class="book-card">';
@@ -155,8 +154,6 @@ var books = {
         console.log(isbn);
         var reservationName = document.getElementById("input_reserve_name_" + isbn).value;
         var reservationEmail = document.getElementById("input_reserve_email_" + isbn).value;
-        console.log(reservationName);
-        console.log(reservationEmail);
 
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -168,6 +165,32 @@ var books = {
         };
         
         xhttp.open("POST", "includes/receiver.php?req=reserve_book&isbn=" + isbn + "&rname=" + encodeURIComponent(reservationName) + "&remail=" + encodeURIComponent(reservationEmail), true);
+        xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+        xhttp.send();
+    },
+    
+    getCategories: function()
+    {
+        var bookCardsSrc = '', i;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var response = this.responseText;
+                var parse_response = JSON.parse(response);
+                console.log(parse_response);
+                
+//                for(i=0; i<parse_response.length; i++){
+//                    bookCardsSrc += '<article class="book-card">';
+//					bookCardsSrc += '							<p>You are about to reserve: ' + parse_response[i].book_title + '</p>';
+//					bookCardsSrc += '</article>';
+//					bookCardsSrc += '</article>';
+//                }
+                //document.getElementById("book-cards").innerHTML = bookCardsSrc;
+                
+            }
+        };
+        
+        xhttp.open("GET", "includes/receiver.php?req=get_categories", true);
         xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
         xhttp.send();
     }

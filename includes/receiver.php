@@ -23,6 +23,10 @@ switch($_REQUEST["req"])
 		$books = new Books();
 		echo json_encode($books->reserve_book($_REQUEST));
 		break;
+	case "get_categories":
+		$books = new Books();
+		echo json_encode($books->get_categories($_REQUEST));
+		break;
 }
 
 ?>

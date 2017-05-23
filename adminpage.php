@@ -1,28 +1,30 @@
 <?php
 
-//include_once (dirname (__FILE__) . '/includes/Books.php');
-//$books = new Books();
-//$get_all_books = $books->get_books();
-//
-//$table_content = '';
-//for($i=0; $i<count($get_all_books); $i++)
-//{
-//	$table_content .= 	'<tr>
-//							<td>' . $get_all_books[$i]['book_isbn'] . '</td>
-//							<td>' . $get_all_books[$i]['book_title'] . '</td>
-//							<td>' . $get_all_books[$i]['book_author'] . '</td>
-//							<td>' . $get_all_books[$i]['book_price'] . ' Kr.</td>
-//							<td><i class="fa fa-circle-o"></i></td>
-//							<td><i class="fa fa-trash-o"></i></td>
-//						</tr>';
-//}
+include_once (dirname (__FILE__) . '/includes/Books.php');
+$books = new Books();
+
+$get_categories = $books->get_categories();
+
+$categories_src = '';
+for($i=0; $i<count($get_categories); $i++)
+{
+	//$cid = '"' . $get_categories[$i]["category_id"] . '"';
+	//$cname = '"' . $get_categories[$i]["category_name"] . '"';
+	$cid = $get_categories[$i]["category_id"];
+	$cname = $get_categories[$i]["category_name"];
+
+	$categories_src .= 	'<a href=\'javascript:selectCategory("' . $cid . '", "' . $cname . '");\'>';
+	$categories_src .= 	$get_categories[$i]["category_name"];
+	$categories_src .= 	'</a>';
+}
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>English Bookstore - Admin page </title>
-	<meta charset="UTF-8">
 	
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -64,16 +66,9 @@
 							<input id="input_price" type="text" placeholder="Enter price" /> </br>
 							<article class="dropdown">
 								<p class="category-dropdown">Choose category</p>
+								<input type="hidden" id="input_categoryid" />
 								<article class="dropdown-content">
-									<a href="javascript:void(0);" onclick="selectCategory('actionand');">Action & Adventure</a>
-									<a href="#">Business</a>
-									<a href="#">Cooking</a>
-									<a href="#">DIY</a>
-									<a href="#">Health & Fitness</a>
-									<a href="#">Romance</a>
-									<a href="#">Travel</a>
-									<a href="#">Sci-fi</a>
-									<a href="#">Sports</a>
+									<?php echo $categories_src;?>
 								</article>
 							</article>
 							</br>
@@ -130,11 +125,12 @@
 	<script type="text/javascript">
 		document.addEventListener("DOMContentLoaded", function(event) { 
 			books.adminGetBooks();
-			
-			function selectCategory(category) {
-				//code
-			}
 		});
+		
+		function selectCategory(categoryId, categoryName) {
+			document.getElementsByClassName("category-dropdown")[0].innerHTML = categoryName;
+			document.getElementById("input_categoryid").value = categoryId;
+		}
 	</script>
 
 </body>
