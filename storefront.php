@@ -82,13 +82,6 @@
 	<main>
 
 		<section id="latest-books">
-			<h2 class="section-title">Latest Books</h2>
-			<p>dada</p>
-			<p>dada</p>
-			<p>dada</p>
-			<p>dada</p>
-			<p>dada</p>
-
 		</section>
 
 		<section id="recommend">
@@ -160,6 +153,7 @@
 	<script src="js/books.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		document.addEventListener("DOMContentLoaded", function(event) {
+			books.getNewestBooks();
 			books.getBooks();
 		});
 
