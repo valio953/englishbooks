@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2017 at 07:34 PM
+-- Generation Time: May 23, 2017 at 09:26 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `authors` (
-  `author_gr_id` int(11) NOT NULL,
+  `author_gr_id` bigint(20) NOT NULL,
   `author_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -39,8 +39,8 @@ CREATE TABLE `authors` (
 
 CREATE TABLE `authors_books` (
   `ab_id` int(11) NOT NULL,
-  `ab_author` int(11) NOT NULL,
-  `ab_book` bigint(11) NOT NULL
+  `ab_author` bigint(20) NOT NULL,
+  `ab_book` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -118,7 +118,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `authors_books`
 --
 ALTER TABLE `authors_books`
-  MODIFY `ab_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ab_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `categories`
 --
