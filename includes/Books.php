@@ -46,8 +46,6 @@ class Books {
        
         $btitle = $grapi_array["search"]["results"]["work"]["best_book"]["title"];
         $bauthor = $grapi_array["search"]["results"]["work"]["best_book"]["author"]["name"];
-        //$btitle = $grapi_xml_str->search->results->work->best_book->title;
-        //$bauthor = $grapi_xml_str->search->results->work->best_book->author->name;
         
         $result = array("title" => $btitle, "author" => $bauthor);
         return $result;
@@ -212,15 +210,77 @@ class Books {
                 book_price
             FROM
                 books
-            WHERE
-                1
         ');
         $rst_get_books->execute();
         $books = $rst_get_books->fetchAll(PDO::FETCH_ASSOC);
         
         $i = 0;
         foreach($books as $book) {
-            //var_dump($book["book_isbn"]); die;
+            $book_isbn = $book["book_isbn"];
+            
+            $rst_get_author = $this->dbh->prepare('
+                SELECT
+                    authors.author_name AS author_name,
+                    ab_book
+                FROM
+                    authors_books
+                    LEFT JOIN authors ON authors.author_gr_id = authors_books.ab_author
+                WHERE
+                    ab_book=:book_isbn
+            ');
+            $rst_get_author->execute(array(":book_isbn" => $book_isbn));
+            $authors = $rst_get_author->fetchAll(PDO::FETCH_ASSOC);
+            $count_bookauthors = count($authors);
+            if($count_bookauthors > 1)
+            {
+                $author_name = "";
+                for($an=0; $an<$count_bookauthors; $an++)
+                {
+                    if($an == ($count_bookauthors - 1))
+                    {
+                        $author_name .= $authors[$an]["author_name"];
+                    }
+                    else {
+                        $author_name .= $authors[$an]["author_name"] . ", ";
+                    }
+                }
+                $books[$i]["book_author"] = $author_name;
+            }
+            else {
+                $author_name = $authors[0]["author_name"];
+                $books[$i]["book_author"] = $author_name;
+            }
+            $i++;
+        }
+        
+        return $books;
+    }
+    
+    public function get_last_books() {
+        $rst_get_books = $this->dbh->prepare('
+            SELECT
+                book_isbn,
+                book_quantity,
+                book_category,
+                book_title,
+                book_description,
+                book_img,
+                book_reserved,
+                book_reservation_date,
+                book_reservation_name,
+                book_reservation_email,
+                book_price
+            FROM
+                books
+            ORDER BY
+                book_regdate DESC
+            LIMIT 5
+        ');
+        $rst_get_books->execute();
+        $books = $rst_get_books->fetchAll(PDO::FETCH_ASSOC);
+        
+        $i = 0;
+        foreach($books as $book) {
             $book_isbn = $book["book_isbn"];
             
             $rst_get_author = $this->dbh->prepare('

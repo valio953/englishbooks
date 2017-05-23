@@ -7,6 +7,10 @@ switch($_REQUEST["req"])
 		$books = new Books();
 		echo json_encode($books->get_books($_REQUEST));
 		break;
+	case "get_last_books":
+		$books = new Books();
+		echo json_encode($books->get_last_books($_REQUEST));
+		break;
     case "check_book":
 		$books = new Books();
 		echo json_encode($books->admin_check_book_isbn($_REQUEST));
