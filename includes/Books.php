@@ -67,13 +67,10 @@ class Books {
         $grapi_xml_str = simplexml_load_string($grapi_src,'SimpleXMLElement',LIBXML_NOCDATA);
         $grapi_json = json_encode($grapi_xml_str);
         $grapi_array = json_decode($grapi_json,TRUE);
-       
+        
         $btitle = $grapi_array["book"]["title"];
-        $bauthor = $grapi_array["book"]["authors"]["author"]["name"];
-        $bauthor_gr_id = $grapi_array["book"]["authors"]["author"]["id"];
         $bdescription = $grapi_array["book"]["description"];
         $bimg = $grapi_array["book"]["image_url"];
-        
         $rst_addbook = $this->dbh->prepare('
             INSERT INTO
             books
@@ -106,41 +103,95 @@ class Books {
             ":price" => $price
         ));
         
-        $rst_addauthor = $this->dbh->prepare('
-            INSERT INTO
-            authors
-            (
-                author_gr_id,
-                author_name
-              )
-            VALUES
-            (
-                :gr_id,
-                :name
-            )
-        ');
-        $rst_addauthor->execute(array(
-            ":gr_id" => $bauthor_gr_id,
-            ":name" => $bauthor
-        ));
         
-        $rst_connect_authors_book = $this->dbh->prepare('
-            INSERT INTO
-            authors_books
-            (
-                ab_author,
-                ab_book
-              )
-            VALUES
-            (
-                :author,
-                :book
-            )
-        ');
-        $rst_connect_authors_book->execute(array(
-            ":author" => $bauthor_gr_id,
-            ":book" => $isbn
-        ));
+        if(isset($grapi_array["book"]["authors"]["author"][0]))
+        {
+            $prepare_authors = $grapi_array["book"]["authors"]["author"];
+            $count_authors = count($prepare_authors);
+            foreach($prepare_authors as $author)
+            {
+                if(empty($author["role"]) || $author["role"] === "Writer")
+                {
+                    $bauthor = $author["name"];
+                    $bauthor_gr_id = $author["id"];
+                    
+                    $rst_addauthor = $this->dbh->prepare('
+                        INSERT INTO
+                        authors
+                        (
+                            author_gr_id,
+                            author_name
+                          )
+                        VALUES
+                        (
+                            :gr_id,
+                            :name
+                        )
+                    ');
+                    $rst_addauthor->execute(array(
+                        ":gr_id" => $bauthor_gr_id,
+                        ":name" => $bauthor
+                    ));
+                    
+                    $rst_connect_authors_book = $this->dbh->prepare('
+                        INSERT INTO
+                        authors_books
+                        (
+                            ab_author,
+                            ab_book
+                          )
+                        VALUES
+                        (
+                            :author,
+                            :book
+                        )
+                    ');
+                    $rst_connect_authors_book->execute(array(
+                        ":author" => $bauthor_gr_id,
+                        ":book" => $isbn
+                    ));
+                }
+            }
+        } else {
+            $bauthor = $grapi_array["book"]["authors"]["author"]["name"];
+            $bauthor_gr_id = $grapi_array["book"]["authors"]["author"]["id"];
+            
+            $rst_addauthor = $this->dbh->prepare('
+                INSERT INTO
+                authors
+                (
+                    author_gr_id,
+                    author_name
+                  )
+                VALUES
+                (
+                    :gr_id,
+                    :name
+                )
+            ');
+            $rst_addauthor->execute(array(
+                ":gr_id" => $bauthor_gr_id,
+                ":name" => $bauthor
+            ));
+            
+            $rst_connect_authors_book = $this->dbh->prepare('
+                INSERT INTO
+                authors_books
+                (
+                    ab_author,
+                    ab_book
+                  )
+                VALUES
+                (
+                    :author,
+                    :book
+                )
+            ');
+            $rst_connect_authors_book->execute(array(
+                ":author" => $bauthor_gr_id,
+                ":book" => $isbn
+            ));
+        }        
         
         return true;
     }

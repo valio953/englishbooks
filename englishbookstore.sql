@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2017 at 04:08 AM
+-- Generation Time: May 23, 2017 at 07:34 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -52,15 +52,27 @@ CREATE TABLE `authors_books` (
 CREATE TABLE `books` (
   `book_isbn` bigint(20) NOT NULL,
   `book_quantity` int(11) NOT NULL DEFAULT '1',
-  `book_category` int(11) NOT NULL,
+  `book_category` int(11) DEFAULT NULL,
   `book_title` char(100) NOT NULL,
   `book_description` text,
   `book_img` text,
   `book_reserved` enum('yes','no') NOT NULL DEFAULT 'no',
   `book_reservation_date` datetime DEFAULT NULL,
   `book_reservation_name` varchar(100) DEFAULT NULL,
+  `book_reservation_email` char(100) DEFAULT NULL,
   `book_price` decimal(10,2) DEFAULT NULL,
   `book_regdate` timestamp NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `category_id` int(11) NOT NULL,
+  `category_name` varchar(55) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -78,6 +90,7 @@ ALTER TABLE `authors`
 --
 ALTER TABLE `authors_books`
   ADD PRIMARY KEY (`ab_id`),
+  ADD UNIQUE KEY `unique_index` (`ab_author`,`ab_book`),
   ADD KEY `ab_author` (`ab_author`),
   ADD KEY `ab_book` (`ab_book`);
 
@@ -92,6 +105,12 @@ ALTER TABLE `books`
   ADD KEY `book_category` (`book_category`);
 
 --
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`category_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -99,7 +118,12 @@ ALTER TABLE `books`
 -- AUTO_INCREMENT for table `authors_books`
 --
 ALTER TABLE `authors_books`
-  MODIFY `ab_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ab_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

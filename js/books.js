@@ -15,7 +15,7 @@ var books = {
             if (this.readyState == 4 && this.status == 200) {
                 var response = this.responseText;
                 var parse_response = JSON.parse(response);
-                
+                console.log(parse_response);
                 for(i=0; i<parse_response.length; i++){
                     adminTableSrc += '<tr>';
                 	adminTableSrc += '<td>' + parse_response[i].book_isbn + '</td>';

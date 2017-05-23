@@ -8,8 +8,6 @@ $get_categories = $books->get_categories();
 $categories_src = '';
 for($i=0; $i<count($get_categories); $i++)
 {
-	//$cid = '"' . $get_categories[$i]["category_id"] . '"';
-	//$cname = '"' . $get_categories[$i]["category_name"] . '"';
 	$cid = $get_categories[$i]["category_id"];
 	$cname = $get_categories[$i]["category_name"];
 
