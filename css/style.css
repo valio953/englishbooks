@@ -541,7 +541,7 @@ body {
 }
 
 #book-cards {
-  display: flex;
+  /*display: flex;*/
   padding: 0.5rem 0;
   /*overflow-y: scroll;*/
 }
@@ -565,6 +565,7 @@ body {
   background-color: rgba(255, 255, 255, .8); /*White with opacity*/
   margin: 5px;
   padding: 0.5rem;
+  display: inline-block;
 }
 
 .b-title {
@@ -595,7 +596,7 @@ body {
   width:50%;
 }
 .btn-trigger-rmodal {
-  width: 50%;
+  width: 40%;
   background-color: #4DA6AD;
   color: #f1f1f1;
   text-align: center;
