@@ -60,9 +60,9 @@
 							<button id="scan-isbn-btn">SCAN ISBN</button>
 							<input id="input_price" type="text" placeholder="Enter price" /> </br>
 							<article class="dropdown">
-								<button class="dropbtn">Choose category</button>
+								<p class="category-dropdown">Choose category</p>
 								<article class="dropdown-content">
-									<a href="#">Action & Adventure</a>
+									<a href="javascript:void(0);" onclick="selectCategory('actionand');">Action & Adventure</a>
 									<a href="#">Business</a>
 									<a href="#">Cooking</a>
 									<a href="#">DIY</a>
@@ -118,6 +118,10 @@
 	<script type="text/javascript">
 		document.addEventListener("DOMContentLoaded", function(event) { 
 			books.adminGetBooks();
+			
+			function selectCategory(category) {
+				//code
+			}
 		});
 	</script>
 

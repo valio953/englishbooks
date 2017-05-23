@@ -19,9 +19,16 @@ class Books {
             $this->dbh = new PDO($dsn, $this->user, $this->pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
         }
         catch (PDOException $e) {
-
+        
             echo $e->getMessage();
         }
+    }
+    
+    public function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
     
     /* Admin function: Looking for book into GoodReads Database by book's ISBN
@@ -230,4 +237,32 @@ class Books {
         return true;
     }
     
+    /* User script */
+    public function reserve_book($params)
+    {
+        $isbn = $params["isbn"];
+        $reservation_name = $this->test_input($params["rname"]);
+        $reservation_email = $this->test_input($params["remail"]);
+        
+       // var_dump($reservation_name);
+        //var_dump($params); die;
+        $rst_reserve_book = $this->dbh->prepare('
+            UPDATE
+                books
+            SET
+                book_reserved="yes",
+                book_reservation_date=NOW(),
+                book_reservation_name=:rname,
+                book_reservation_email=:remail
+            WHERE
+                book_isbn=:isbn
+        ');
+        $rst_reserve_book->execute(array(
+                                        ":rname" => $reservation_name,
+                                        ":remail" => $reservation_email,
+                                        ":isbn" => $isbn
+        ));
+        
+        return "This book was reservered for you for 2 DAYS!";
+    }
 }

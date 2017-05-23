@@ -19,6 +19,10 @@ switch($_REQUEST["req"])
 		$books = new Books();
 		echo json_encode($books->admin_remove_book($_REQUEST));
 		break;
+	case "reserve_book":
+		$books = new Books();
+		echo json_encode($books->reserve_book($_REQUEST));
+		break;
 }
 
 ?>
