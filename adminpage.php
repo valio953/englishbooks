@@ -2,7 +2,7 @@
 
 //include_once (dirname (__FILE__) . '/includes/Books.php');
 //$books = new Books();
-//$get_all_books = $books->admin_get_books();
+//$get_all_books = $books->get_books();
 //
 //$table_content = '';
 //for($i=0; $i<count($get_all_books); $i++)
@@ -22,10 +22,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>English Bookstore - Admin page </title>
+	<meta charset="UTF-8">
+	
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -92,6 +95,15 @@
 
 		<section id="books-table">
 			<table id="myTable">
+			  <!--<tr class="header">
+					<th style="width:20%;">ISBN</th>
+					<th style="width:25%;">Title</th>
+					<th style="width:25%;">Author</th>
+					<th style="width:10%;">Price</th>
+			    <th style="width:10%;">Reserved</th>
+			    <th style="width:10%;">Delete</th>
+			  </tr>-->
+
 				<?php //echo $table_content;?>
 			</table>
 		</section>

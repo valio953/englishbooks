@@ -1,4 +1,4 @@
-﻿var books = {
+var books = {
     adminGetBooks: function()
     {
         var adminTableSrc = '<tr class="header"> \
