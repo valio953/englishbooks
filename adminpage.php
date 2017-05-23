@@ -2,29 +2,33 @@
 
 include_once (dirname (__FILE__) . '/includes/Books.php');
 $books = new Books();
-$get_all_books = $books->admin_get_books();
 
-$table_content = '';
-for($i=0; $i<count($get_all_books); $i++)
+$get_categories = $books->get_categories();
+
+$categories_src = '';
+for($i=0; $i<count($get_categories); $i++)
 {
-	$table_content .= 	'<tr>
-							<td>' . $get_all_books[$i]['book_isbn'] . '</td>
-							<td>' . $get_all_books[$i]['book_title'] . '</td>
-							<td>' . $get_all_books[$i]['book_author'] . '</td>
-							<td>' . $get_all_books[$i]['book_price'] . ' Kr.</td>
-							<td><i class="fa fa-circle-o"></i></td>
-							<td><i class="fa fa-trash-o"></i></td>
-						</tr>';
+	$cid = $get_categories[$i]["category_id"];
+	$cname = $get_categories[$i]["category_name"];
+
+	$categories_src .= 	'<a href=\'javascript:selectCategory("' . $cid . '", "' . $cname . '");\'>';
+	$categories_src .= 	$get_categories[$i]["category_name"];
+	$categories_src .= 	'</a>';
 }
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>English Bookstore - Admin page </title>
+	
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -59,17 +63,10 @@ for($i=0; $i<count($get_all_books); $i++)
 							<button id="scan-isbn-btn">SCAN ISBN</button>
 							<input id="input_price" type="text" placeholder="Enter price" /> </br>
 							<article class="dropdown">
-								<button class="dropbtn">Choose category</button>
+								<p class="category-dropdown">Choose category</p>
+								<input type="hidden" id="input_categoryid" />
 								<article class="dropdown-content">
-									<a href="#">Action & Adventure</a>
-									<a href="#">Business</a>
-									<a href="#">Cooking</a>
-									<a href="#">DIY</a>
-									<a href="#">Health & Fitness</a>
-									<a href="#">Romance</a>
-									<a href="#">Travel</a>
-									<a href="#">Sci-fi</a>
-									<a href="#">Sports</a>
+									<?php echo $categories_src;?>
 								</article>
 							</article>
 							</br>
@@ -91,19 +88,20 @@ for($i=0; $i<count($get_all_books); $i++)
 
 		<section id="books-table">
 			<table id="myTable">
-			  <tr class="header">
+			  <!--<tr class="header">
 					<th style="width:20%;">ISBN</th>
 					<th style="width:25%;">Title</th>
 					<th style="width:25%;">Author</th>
 					<th style="width:10%;">Price</th>
 			    <th style="width:10%;">Reserved</th>
 			    <th style="width:10%;">Delete</th>
-			  </tr>
-				<?php echo $table_content;?>
+			  </tr>-->
+
+				<?php //echo $table_content;?>
 			</table>
 		</section>
 	</main>
-
+	
 	<footer>
 		<section id="admin-footer">
 			<article id="bookstore-details">
@@ -122,6 +120,16 @@ for($i=0; $i<count($get_all_books); $i++)
 
 	<script type="text/javascript" src="js/script.js"></script>
 	<script src="js/books.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", function(event) { 
+			books.adminGetBooks();
+		});
+		
+		function selectCategory(categoryId, categoryName) {
+			document.getElementsByClassName("category-dropdown")[0].innerHTML = categoryName;
+			document.getElementById("input_categoryid").value = categoryId;
+		}
+	</script>
 
 </body>
 </html>
