@@ -138,7 +138,7 @@
   <footer>
 		<section id="storefront-footer">
 			<article id="fb-stf">
-				<p>facebook</p>
+				<button class="facebook-btn">Follow us on Facebook</button>
 			</article>
 			<article id="bookstore-details-stf">
 				<p><i class="fa fa-map-marker"></i> Frederiks Allé 53, 8000 Aarhus C</p>
@@ -159,15 +159,15 @@
 
 	<script src="js/books.js" type="text/javascript"></script>
 	<script type="text/javascript">
-		document.addEventListener("DOMContentLoaded", function(event) { 
+		document.addEventListener("DOMContentLoaded", function(event) {
 			books.getBooks();
 		});
-	  
+
 		function displayBlock(modal_id) {
 			var modal = document.getElementById("add-book-modal-" + modal_id);
 			modal.style.display = "block";
 		}
-		
+
 		function displayNone(modal_id) {
 			var modal = document.getElementById("add-book-modal-" + modal_id);
 			modal.style.display = "none";
