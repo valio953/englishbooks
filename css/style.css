@@ -69,7 +69,7 @@ body {
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
-  border: 2px solid #E5A5A0;
+  border: none;
   border-radius: 5px;
   margin: 0.8rem;
   padding: 0.2rem 1rem;
