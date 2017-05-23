@@ -133,7 +133,7 @@ class Books {
             ":book" => $isbn
         ));
         
-        return "success";
+        return true;
     }
     
     public function get_books() {
@@ -148,6 +148,7 @@ class Books {
                 book_reserved,
                 book_reservation_date,
                 book_reservation_name,
+                book_reservation_email,
                 book_price
             FROM
                 books
@@ -211,6 +212,22 @@ class Books {
         $authors = $rst_get_author->fetchAll(PDO::FETCH_ASSOC);
         
         return $books;
+    }
+    
+    public function admin_remove_book($params)
+    {
+        $isbn = $params['isbn'];
+        
+        $rst_remove_book = $this->dbh->prepare('
+            DELETE
+                FROM
+                    books
+            WHERE
+                book_isbn=:isbn
+        ');
+        $rst_remove_book->execute(array(":isbn" => $isbn));
+        
+        return true;
     }
     
 }
