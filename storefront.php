@@ -1,59 +1,3 @@
-<?php
-
-//
-//include_once (dirname (__FILE__) . '/includes/Books.php');
-//$books = new Books();
-//
-//$get_all_books = $books->get_books();
-//
-//$book_cards_from_db = '';
-//for($i=0; $i<count($get_all_books); $i++)
-//{
-//	$book_cards_from_db .= 	'<article class="book-card">
-//										<img class="book-cover" src="' . $get_all_books[$i]['book_img'] . '">
-//										<p class="b-title">' . $get_all_books[$i]['book_title'] .'</p>
-//										<p class="b-author">' . $get_all_books[$i]['book_author'] .'</p>
-//										<article class="b-price-reserve">
-//										<p class="b-price">' . $get_all_books[$i]['book_price'] .' Kr.</p>
-//										<button id="add-book-btn-' . $get_all_books[$i]['book_isbn'] .'" class="reserve-btn">
-//											<span>Reserve</span>
-//										</button>
-//										</article>
-//										<!-- The Modal -->
-//										<article id="add-book-modal-' . $get_all_books[$i]['book_isbn'] .'" class="modal">
-//											<!-- Modal content -->
-//											<article class="add-book-modal-content">
-//												<article class="add-book-modal-header">
-//													<span class="close" id="close-' . $get_all_books[$i]['book_isbn'] .'">&times;</span>
-//													<h3>Reserve a book</h3>
-//												</article>
-//												<article class="add-book-modal-body">
-//													<p>You are about to reserve: ' . $get_all_books[$i]['book_title'] .'</p>
-//													<input id="input_name" type="text" placeholder="Enter your name" />
-//													<input id="input_email" type="text" placeholder="Enter your email" />
-//													<button class="add-btn">RESERVE BOOK</button>
-//												</article>
-//											</article>
-//										</article>
-//										</article>
-//										<script type="text/javascript">
-//											var modal = document.getElementById("add-book-modal-' . $get_all_books[$i]['book_isbn'] .'");
-//											var btn = document.getElementById("add-book-btn-' . $get_all_books[$i]['book_isbn'] .'");
-//											var span = document.getElementById("close-' . $get_all_books[$i]['book_isbn'] .'");
-//											btn.onclick = function() {
-//											    modal.style.display = "block";
-//											}
-//											span.onclick = function() {
-//											    modal.style.display = "none";
-//											}
-//											window.onclick = function(event) {
-//											    if (event.target == modal) {
-//											        modal.style.display = "none";
-//											    }
-//											}
-//										</script>';
-//}
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,6 +6,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -82,11 +27,35 @@
 	<main>
 
 		<section id="latest-books">
+			
 		</section>
 
 		<section id="recommend">
 			<h3 class="section-title"> Not sure what book to read next? Try one of our recommendations based on your facial emotion.</h3>
+			
+			
+			<!-- Trigger/Open The Modal -->
 			<button class="recommend-btn"><span>Get a recommendation</span></button>
+			
+			<!-- The Modal -->
+			<article id="books-recomendations-modal" class="modal">
+			  <!-- Modal content -->
+			  <article class="add-book-modal-content">
+					<article class="add-book-modal-header">
+				    <span class="close">&times;</span>
+				    <h3>Add a new book</h3>
+				  </article>
+				  <article class="add-book-modal-body">
+						<div id="my_camera"></div>
+						<div id="results"></div>
+						<!-- A button for taking snaps -->
+						<form>
+							<input type=button value="Take Large Snapshot" onClick="take_snapshot()">
+						</form>
+				  </article>
+			  </article>
+			</article>
+			
 		</section>
 
 		<section id="browse-books">
@@ -109,7 +78,7 @@
 						<input type="text" id="storefront-book-search" placeholder="Search books by title">
 					</article>
 					<article id="book-cards">
-						<?php //echo $book_cards_from_db;?>
+						
 					</article>
 				</article>
 			</article>
@@ -151,6 +120,8 @@
 	</footer>
 
 	<script src="js/books.js" type="text/javascript"></script>
+    <script src="js/webcam.min.js" type="text/javascript"></script>
+    <script src="js/emotions.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		document.addEventListener("DOMContentLoaded", function(event) {
 			books.getNewestBooks();
@@ -166,6 +137,29 @@
 			var modal = document.getElementById("add-book-modal-" + modal_id);
 			modal.style.display = "none";
 		}
+		
+		// Get the modal
+		var modal = document.getElementById('books-recomendations-modal');
+		// Get the button that opens the modal
+		var btn = document.getElementsByClassName("recommend-btn")[0];
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+		// When the user clicks the button, open the modal
+		btn.onclick = function() {
+			modal.style.display = "block";
+		}
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+		}
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+		
+		
 	</script>
 
 </body>
