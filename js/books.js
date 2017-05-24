@@ -208,7 +208,7 @@ var books = {
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var response = this.responseText;
-                console.log(response);
+                //console.log(response);
                 //document.getElementById("p_result").innerHTML = response;
             }
         };
@@ -227,15 +227,6 @@ var books = {
                 var response = this.responseText;
                 var parse_response = JSON.parse(response);
                 console.log(parse_response);
-
-//                for(i=0; i<parse_response.length; i++){
-//                    bookCardsSrc += '<article class="book-card">';
-//					bookCardsSrc += '							<p>You are about to reserve: ' + parse_response[i].book_title + '</p>';
-//					bookCardsSrc += '</article>';
-//					bookCardsSrc += '</article>';
-//                }
-                //document.getElementById("book-cards").innerHTML = bookCardsSrc;
-
             }
         };
 
