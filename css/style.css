@@ -410,6 +410,7 @@ body {
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
+    margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
@@ -420,7 +421,7 @@ body {
     position: absolute;
     padding-top: 300%;
     padding-left: 350%;
-    margin-left: -20px !important;
+    margin-left: -50px !important;
     margin-top: -120%;
     opacity: 0;
     transition: all 0.8s
@@ -462,7 +463,7 @@ body {
 .recommend-btn {
   display: inline-block;
   border-radius: 5px;
-  background-color: #4DA6AD;
+  background-color: #1E1344;
   border: none;
   color: #f1f1f1;
   text-align: center;
@@ -645,6 +646,11 @@ body {
   cursor: pointer;
   border-radius: 5px;
 }
+
+#request-book button:hover {
+  color:#1E1344;
+}
+
 .req-form {
   font-family: 'Roboto', sans-serif;
   border-radius: 5px;
@@ -747,6 +753,9 @@ body {
   border-radius: 5px;
 }
 
+.login-btn:hover {
+  color:#1E1344;
+}
 
 /* common classes */
 .ul-nostyle {
@@ -781,4 +790,38 @@ body {
 
 .tooltip:hover .tooltiptext {
     visibility: visible;
+}
+
+.help-btn {
+  /*line-height: 34px;*/
+  /*margin: 0.2em;*/
+  padding: 5px 15px 5px 15px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #4DA6AD;
+  color: #f1f1f1;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.help-btn:hover {
+  color:#1E1344;
+}
+
+/*Reserve modal*/
+.input-rsv-text {
+  width: 72%;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 0.5rem;
+  font-size: 14px;
+  border: 1px solid #5e5e5e;
+  margin-top: 1rem;
+}
+.reserve-book-modal-body {
+  text-align: center;
 }

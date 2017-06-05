@@ -23,7 +23,7 @@ for($i=0; $i<count($get_categories); $i++)
 <head>
 	<meta charset="UTF-8">
 	<title>English Bookstore - Admin page </title>
-	
+
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
@@ -38,7 +38,7 @@ for($i=0; $i<count($get_categories); $i++)
 			<article class="nav">
 				<ul>
 					<li><a href="storefront.php"><img  id="logo-image" src="img/logo-white.png"></a></li>
-					<li class="align-right"><button class="log-out-btn">Log out</button>
+					<li class="align-right"><a href="storefront.php"><button class="log-out-btn">Log out</button></a>
 					<li id="storefront-link"><a href="storefront.php">Go to storefront</a></li>
 				</ul>
 			</article>
@@ -101,7 +101,7 @@ for($i=0; $i<count($get_categories); $i++)
 			</table>
 		</section>
 	</main>
-	
+
 	<footer>
 		<section id="admin-footer">
 			<article id="bookstore-details">
@@ -121,10 +121,10 @@ for($i=0; $i<count($get_categories); $i++)
 	<script type="text/javascript" src="js/script.js"></script>
 	<script src="js/books.js" type="text/javascript"></script>
 	<script type="text/javascript">
-		document.addEventListener("DOMContentLoaded", function(event) { 
+		document.addEventListener("DOMContentLoaded", function(event) {
 			books.adminGetBooks();
 		});
-		
+
 		function selectCategory(categoryId, categoryName) {
 			document.getElementsByClassName("category-dropdown")[0].innerHTML = categoryName;
 			document.getElementById("input_categoryid").value = categoryId;

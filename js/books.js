@@ -130,10 +130,10 @@ var books = {
 					bookCardsSrc += '							<span onclick="displayNone(' + parse_response[i].book_isbn + ');" class="close" id="close-' + parse_response[i].book_isbn + '">&times;</span>';
 					bookCardsSrc += '							<h3>Reserve a book</h3>';
 					bookCardsSrc += '						</article>';
-					bookCardsSrc += '						<article class="add-book-modal-body">';
+					bookCardsSrc += '						<article class="reserve-book-modal-body">';
 					bookCardsSrc += '							<p>You are about to reserve: ' + parse_response[i].book_title + '</p>';
-					bookCardsSrc += '							<input id="input_reserve_name_' + parse_response[i].book_isbn + '" type="text" placeholder="Enter your name" />';
-					bookCardsSrc += '							<input id="input_reserve_email_' + parse_response[i].book_isbn + '" type="email" placeholder="Enter your email" />';
+					bookCardsSrc += '							<input class="input-rsv-text" id="input_reserve_name_' + parse_response[i].book_isbn + '" type="text" placeholder="Enter your name" /><br/>';
+					bookCardsSrc += '							<input class="input-rsv-text" id="input_reserve_email_' + parse_response[i].book_isbn + '" type="email" placeholder="Enter your email" /><br/>';
 					bookCardsSrc += '							<button class="reserve-btn" onclick="books.reserveBook(' + parse_response[i].book_isbn + ');">RESERVE BOOK</button>';
 					bookCardsSrc += '						</article>';
 					bookCardsSrc += '					</article>';

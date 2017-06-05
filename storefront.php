@@ -35,9 +35,9 @@ for($i=0; $i<count($get_categories); $i++)
 			<article class="nav">
 				<ul>
 					<li><a href="storefront.php"><img  id="logo-image" src="img/logo-white.png"></a></li>
-          <li class="nav-link"><a href="storefront.php">Request a book</a></li>
-          <li class="nav-link"><a href="storefront.php">Get a recommendation</a></li>
-          <li class="nav-link"><a href="storefront.php">Browse books</a></li>
+          <li class="nav-link"><a href="#request-book">Request a book</a></li>
+          <li class="nav-link"><a href="#recommend">Get a recommendation</a></li>
+          <li class="nav-link"><a href="#browse-books">Browse books</a></li>
 				</ul>
 			</article>
 		</section>
@@ -46,23 +46,24 @@ for($i=0; $i<count($get_categories); $i++)
 	<main>
 
 		<section id="latest-books">
-			
+
 		</section>
 
 		<section id="recommend">
 			<h3 class="section-title"> Not sure what book to read next? Try one of our recommendations based on your facial emotion.</h3>
-			
-			
+
+
 			<!-- Trigger/Open The Modal -->
+			<a href="https://www.youtube.com/watch?v=1laHtmi-9-M" target="_blank"><button class="help-btn"><span>How it works</span></button></a><br/>
 			<button class="recommend-btn"><span>Get a recommendation</span></button>
-			
+
 			<!-- The Modal -->
 			<article id="books-recomendations-modal" class="modal">
 			  <!-- Modal content -->
 			  <article class="add-book-modal-content">
 					<article class="add-book-modal-header">
 				    <span class="close">&times;</span>
-				    <h3>Add a new book</h3>
+				    <h3>Get a book recommendation</h3>
 				  </article>
 				  <article class="add-book-modal-body">
 						<div id="my_camera"></div>
@@ -74,7 +75,7 @@ for($i=0; $i<count($get_categories); $i++)
 				  </article>
 			  </article>
 			</article>
-			
+
 		</section>
 
 		<section id="browse-books">
@@ -98,7 +99,7 @@ for($i=0; $i<count($get_categories); $i++)
 						<input type="text" id="storefront-book-search" placeholder="Search books by title">
 					</article>
 					<article id="book-cards">
-						
+
 					</article>
 				</article>
 			</article>
@@ -120,7 +121,7 @@ for($i=0; $i<count($get_categories); $i++)
   <footer>
 		<section id="storefront-footer">
 			<article id="fb-stf">
-				<button class="facebook-btn">Follow us on Facebook</button>
+				<a href="https://www.facebook.com/englishbooksaarhus" target="_blank"><button class="facebook-btn">Follow us on Facebook</button></a>
 			</article>
 			<article id="bookstore-details-stf">
 				<p><i class="fa fa-map-marker"></i> Frederiks Allé 53, 8000 Aarhus C</p>
@@ -134,7 +135,7 @@ for($i=0; $i<count($get_categories); $i++)
 				<p>Sun, Mon <strong>CLOSED</strong></p>
 			</article>
 			<article id="login-stf">
-				<button class="login-btn">Login as admin</button>
+				<a href="adminpage.php"><button class="login-btn">Login as admin</button></a>
 			</article>
 		</section>
 	</footer>
@@ -157,7 +158,7 @@ for($i=0; $i<count($get_categories); $i++)
 			var modal = document.getElementById("add-book-modal-" + modal_id);
 			modal.style.display = "none";
 		}
-		
+
 		// Get the modal
 		var modal = document.getElementById('books-recomendations-modal');
 		// Get the button that opens the modal
@@ -178,8 +179,8 @@ for($i=0; $i<count($get_categories); $i++)
 				modal.style.display = "none";
 			}
 		}
-		
-		
+
+
 	</script>
 
 </body>
