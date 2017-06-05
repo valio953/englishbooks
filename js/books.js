@@ -150,8 +150,10 @@ var books = {
         xhttp.send();
     },
     
-    getBooks: function()
+    getBooks: function(category)
     {
+        category = (typeof category === 'undefined') ? '' : category;
+        
         var bookCardsSrc = '', i;
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -193,7 +195,7 @@ var books = {
             }
         };
 
-        xhttp.open("GET", "includes/receiver.php?req=get_books", true);
+        xhttp.open("GET", "includes/receiver.php?req=get_books&category=" + category, true);
         xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
         xhttp.send();
     },

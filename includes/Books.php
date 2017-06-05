@@ -194,7 +194,15 @@ class Books {
         return true;
     }
     
-    public function get_books() {
+    public function get_books($params) {
+        $where_array[] = "1=1";
+        $binds = array();
+        
+        if ($params["category"] != "") {
+            $where_array[] = "book_category=:category";
+            $binds[":category"] = $params["category"];
+        }
+        
         $rst_get_books = $this->dbh->prepare('
             SELECT
                 book_isbn,
@@ -210,8 +218,10 @@ class Books {
                 book_price
             FROM
                 books
+            WHERE
+                ' . implode(" AND ", $where_array) . '
         ');
-        $rst_get_books->execute();
+        $rst_get_books->execute($binds);
         $books = $rst_get_books->fetchAll(PDO::FETCH_ASSOC);
         
         $i = 0;

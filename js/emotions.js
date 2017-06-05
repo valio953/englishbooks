@@ -45,7 +45,15 @@ function take_snapshot() {
                     data: "{'url': '" + img_src + "'}",
                 })
                 .done(function(data) {
-                    alert("success");
+                    //alert("success");
+                    console.log(data);
+                    
+                    var scores = data[0].scores;
+                    
+                    var scores_keys = Object.keys(scores);
+                    var largest_key = Math.max.apply(null, scores_keys.map(x => scores[x]));
+                    var score = scores_keys.reduce((score, key) => { if (scores[key] === largest_key){ score.push(key); } return score; }, []);
+                    
                 })
                 .fail(function() {
                     alert("error");

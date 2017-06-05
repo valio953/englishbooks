@@ -1,3 +1,22 @@
+<?php
+
+include_once (dirname (__FILE__) . '/includes/Books.php');
+$books = new Books();
+
+$get_categories = $books->get_categories();
+
+$categories_src = '<a href=\'javascript:books.getBooks();\' class="a-nostyle">All</a><br />';
+for($i=0; $i<count($get_categories); $i++)
+{
+	$cid = $get_categories[$i]["category_id"];
+	$cname = $get_categories[$i]["category_name"];
+
+	$categories_src .= 	'<a href=\'javascript:books.getBooks("' . $cid . '");\' class="a-nostyle">';
+	$categories_src .= 	$cname;
+	$categories_src .= 	'</a><br />';
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,7 +82,7 @@
 			<article class="browse-books-content">
 				<article id="categories">
 					<h3>Categories</h3>
-					<p>All</p>
+					<!--<p>All</p>
 					<p>Sci-fi</p>
 					<p>Business</p>
 					<p>Romance</p>
@@ -71,7 +90,8 @@
 					<p>Cooking</p>
 					<p>Health & Fitness</p>
 					<p>Action & Adventure</p>
-					<p>DIY</p>
+					<p>DIY</p>-->
+					<?php echo $categories_src; ?>
 				</article>
 				<article id="browse-book-cards">
 					<article id="search-bar-storefront">
@@ -120,7 +140,7 @@
 	</footer>
 
 	<script src="js/books.js" type="text/javascript"></script>
-    <script src="js/webcam.min.js" type="text/javascript"></script>
+    <!--<script src="js/webcam.min.js" type="text/javascript"></script>-->
     <script src="js/emotions.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		document.addEventListener("DOMContentLoaded", function(event) {
