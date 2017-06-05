@@ -118,7 +118,7 @@ var books = {
 					bookCardsSrc += '					<p class="b-author">by ' + parse_response[i].book_author + '</p>';
 					bookCardsSrc += '					<article class="b-price-reserve">';
 					bookCardsSrc += '					    <p class="b-price">' + parse_response[i].book_price + ' Kr.</p>';
-					bookCardsSrc += '					    <button onclick="displayBlock(' + parse_response[i].book_isbn + ');" id="add-book-btn-' + parse_response[i].book_isbn + '" class="reserve-btn">';
+					bookCardsSrc += '					    <button onclick="displayBlock(' + parse_response[i].book_isbn + ');" id="add-book-btn-' + parse_response[i].book_isbn + '" class="btn-trigger-rmodal">';
 					bookCardsSrc += '						    <span>Reserve</span>';
 					bookCardsSrc += '					    </button>';
 					bookCardsSrc += '					</article>';
@@ -149,11 +149,11 @@ var books = {
         xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
         xhttp.send();
     },
-    
+
     getBooks: function(category)
     {
         category = (typeof category === 'undefined') ? '' : category;
-        
+
         var bookCardsSrc = '', i;
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
