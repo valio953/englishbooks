@@ -7,6 +7,12 @@ class Books {
     private $user      = "root";
     private $pass      = "123456";
     private $dbname    = "englishbookstore";
+    
+    // DB credentials - server
+    //private $host      = "localhost";
+    //private $user      = "vvalevco_admin";
+    //private $pass      = "v1a2d345";
+    //private $dbname    = "vvalevco_englishbookstore";
  
     private $dbh;
     
