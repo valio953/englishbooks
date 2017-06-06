@@ -11,7 +11,7 @@ for($i=0; $i<count($get_categories); $i++)
 	$cid = $get_categories[$i]["category_id"];
 	$cname = $get_categories[$i]["category_name"];
 
-	$categories_src .= 	'<a href=\'javascript:books.getBooks("' . $cid . '");\' class="a-nostyle">';
+	$categories_src .= 	'<a href=\'javascript:books.getBooks({category: "' . $cid . '"});\' class="a-nostyle">';
 	$categories_src .= 	$cname;
 	$categories_src .= 	'</a><br />';
 }
@@ -83,15 +83,6 @@ for($i=0; $i<count($get_categories); $i++)
 			<article class="browse-books-content">
 				<article id="categories">
 					<h3>Categories</h3>
-					<!--<p>All</p>
-					<p>Sci-fi</p>
-					<p>Business</p>
-					<p>Romance</p>
-					<p>Travel</p>
-					<p>Cooking</p>
-					<p>Health & Fitness</p>
-					<p>Action & Adventure</p>
-					<p>DIY</p>-->
 					<?php echo $categories_src; ?>
 				</article>
 				<article id="browse-book-cards">
@@ -101,6 +92,8 @@ for($i=0; $i<count($get_categories); $i++)
 					<article id="book-cards">
 
 					</article>
+					<input type="hidden" id="hddnPage" value="1" />
+					<article class="pagination"></article>
 				</article>
 			</article>
 		</section>
@@ -140,13 +133,16 @@ for($i=0; $i<count($get_categories); $i++)
 		</section>
 	</footer>
 
+	<script src="js/script.js" type="text/javascript"></script>
 	<script src="js/books.js" type="text/javascript"></script>
     <!--<script src="js/webcam.min.js" type="text/javascript"></script>-->
     <script src="js/emotions.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		document.addEventListener("DOMContentLoaded", function(event) {
 			books.getNewestBooks();
-			books.getBooks();
+			books.getBooks({
+				page: 1
+			});
 		});
 
 		function displayBlock(modal_id) {

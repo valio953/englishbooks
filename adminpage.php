@@ -88,17 +88,10 @@ for($i=0; $i<count($get_categories); $i++)
 
 		<section id="books-table">
 			<table id="myTable">
-			  <!--<tr class="header">
-					<th style="width:20%;">ISBN</th>
-					<th style="width:25%;">Title</th>
-					<th style="width:25%;">Author</th>
-					<th style="width:10%;">Price</th>
-			    <th style="width:10%;">Reserved</th>
-			    <th style="width:10%;">Delete</th>
-			  </tr>-->
-
-				<?php //echo $table_content;?>
+				
 			</table>
+			<input type="hidden" id="hddnPage" value="1" />
+			<article class="pagination"></article>
 		</section>
 	</main>
 
@@ -122,7 +115,9 @@ for($i=0; $i<count($get_categories); $i++)
 	<script src="js/books.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		document.addEventListener("DOMContentLoaded", function(event) {
-			books.adminGetBooks();
+			books.adminGetBooks({
+				page: 1
+			});
 		});
 
 		function selectCategory(categoryId, categoryName) {

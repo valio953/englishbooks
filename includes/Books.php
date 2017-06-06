@@ -195,6 +195,11 @@ class Books {
     }
     
     public function get_books($params) {
+        if(!isset($params["category"]))
+        {
+            $params["category"] = "";
+        }
+        
         $where_array[] = "1=1";
         $binds = array();
         
@@ -202,6 +207,9 @@ class Books {
             $where_array[] = "book_category=:category";
             $binds[":category"] = $params["category"];
         }
+        
+        $page_size = 12;
+        $offset = ((int) $params["page"] - 1) * $page_size;
         
         $rst_get_books = $this->dbh->prepare('
             SELECT
@@ -220,6 +228,10 @@ class Books {
                 books
             WHERE
                 ' . implode(" AND ", $where_array) . '
+            LIMIT
+                ' . $page_size . '                
+			OFFSET
+                ' . $offset . '
         ');
         $rst_get_books->execute($binds);
         $books = $rst_get_books->fetchAll(PDO::FETCH_ASSOC);
@@ -263,7 +275,20 @@ class Books {
             $i++;
         }
         
-        return $books;
+        $rst_cter = $this->dbh->prepare('
+			SELECT COUNT(*) AS cter
+			FROM
+				books
+			WHERE
+                ' . implode(" AND ", $where_array) . '
+		');
+		$rst_cter->execute($binds);
+		$cter = $rst_cter->fetch(PDO::FETCH_ASSOC);
+        
+        return array(
+                "books" => $books,
+                "pages" => ceil($cter["cter"] / $page_size)
+            );
     }
     
     public function get_last_books() {
@@ -284,7 +309,7 @@ class Books {
                 books
             ORDER BY
                 book_regdate DESC
-            LIMIT 5
+            LIMIT 4
         ');
         $rst_get_books->execute();
         $books = $rst_get_books->fetchAll(PDO::FETCH_ASSOC);
