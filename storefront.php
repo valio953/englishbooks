@@ -35,6 +35,7 @@ for($i=0; $i<count($get_categories); $i++)
 			<article class="nav">
 				<ul>
 					<li><a href="storefront.php"><img  id="logo-image" src="img/logo-white.png"></a></li>
+					<li class="nav-link"><a href="https://www.google.dk/maps/place/English+Bookstore+v%2FBeth+Merit/@56.150102,10.1969275,17z/data=!3m1!4b1!4m5!3m4!1s0x464c3f8d11dad5df:0xdfe7ecf32383a789!8m2!3d56.150099!4d10.1991162?hl=en" target="_blank"><img  id="location-icon" src="img/locationicon.png"></a></li>
           <li class="nav-link"><a href="#request-book">Request a book</a></li>
           <li class="nav-link"><a href="#recommend">Get a recommendation</a></li>
           <li class="nav-link"><a href="#browse-books">Browse books</a></li>

@@ -47,6 +47,13 @@ body {
   padding-top: 0.25rem;
 }
 
+#location-icon {
+  height: 2rem;
+  float: right;
+  position: relative;
+  top: -0.5rem;
+}
+
 #logo-image {
   height: 3rem;
   padding: 0.3rem;
