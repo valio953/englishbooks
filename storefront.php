@@ -5,7 +5,7 @@ $books = new Books();
 
 $get_categories = $books->get_categories();
 
-$categories_src = '<a href=\'javascript:books.getBooks({category: "' . $cid . '"});\' class="a-nostyle">All</a><br />';
+$categories_src = '<a href=\'javascript:books.getBooks({category: ""});\' class="a-nostyle">All</a><br />';
 for($i=0; $i<count($get_categories); $i++)
 {
 	$cid = $get_categories[$i]["category_id"];
