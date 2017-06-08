@@ -2,13 +2,13 @@
 
 class Books {
     
-    // DB credentials
+    //DB credentials
     private $host      = "localhost";
     private $user      = "root";
     private $pass      = "123456";
     private $dbname    = "englishbookstore";
     
-    // DB credentials - server
+    //DB credentials - server
     //private $host      = "localhost";
     //private $user      = "vvalevco_admin";
     //private $pass      = "v1a2d345";
@@ -358,6 +358,77 @@ class Books {
             }
             $i++;
         }
+        
+        return $books;
+    }
+    
+    public function recommend_books($params) {
+        
+        $rst_get_books = $this->dbh->prepare('
+            SELECT
+                book_isbn,
+                book_quantity,
+                book_category,
+                book_title,
+                book_description,
+                book_img,
+                book_reserved,
+                book_reservation_date,
+                book_reservation_name,
+                book_reservation_email,
+                book_price
+            FROM
+                books
+            WHERE
+                book_category in (:categories)
+            ORDER BY RAND()
+            LIMIT
+                5
+        ');
+        $rst_get_books->execute(array(":categories" => $params["category"]));
+        $books = $rst_get_books->fetchAll(PDO::FETCH_ASSOC);
+        
+        $i = 0;
+        foreach($books as $book) {
+            $book_isbn = $book["book_isbn"];
+            
+            $rst_get_author = $this->dbh->prepare('
+                SELECT
+                    authors.author_name AS author_name,
+                    ab_book
+                FROM
+                    authors_books
+                    LEFT JOIN authors ON authors.author_gr_id = authors_books.ab_author
+                WHERE
+                    ab_book=:book_isbn
+            ');
+            $rst_get_author->execute(array(":book_isbn" => $book_isbn));
+            $authors = $rst_get_author->fetchAll(PDO::FETCH_ASSOC);
+            $count_bookauthors = count($authors);
+            if($count_bookauthors > 1)
+            {
+                $author_name = "";
+                for($an=0; $an<$count_bookauthors; $an++)
+                {
+                    if($an == ($count_bookauthors - 1))
+                    {
+                        $author_name .= $authors[$an]["author_name"];
+                    }
+                    else {
+                        $author_name .= $authors[$an]["author_name"] . ", ";
+                    }
+                }
+                $books[$i]["book_author"] = $author_name;
+            }
+            else {
+                $author_name = $authors[0]["author_name"];
+                $books[$i]["book_author"] = $author_name;
+            }
+            $i++;
+        }
+        
+        $img_name = $params["image"];
+        unlink(dirname(dirname(__FILE__)) . '/temp_imgs/' . $img_name . '.jpg');
         
         return $books;
     }

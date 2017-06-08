@@ -9,7 +9,7 @@ Webcam.set({
     image_format: 'jpeg',
     jpeg_quality: 90
 });
-Webcam.attach( '#my_camera' );
+Webcam.attach('#my_camera');
 
 function take_snapshot() {
     // take snapshot and get image data
@@ -20,13 +20,13 @@ function take_snapshot() {
         } );
 
         // display results in browser window
-        document.getElementById('results').innerHTML = 
-            '<h2>Here is your large image:</h2>' + 
-            '<img src="'+data_uri+'"/>';
+        //document.getElementById('results').innerHTML = 
+        //    '<h2>Here is your large image:</h2>' + 
+        //    '<img src="'+data_uri+'"/>';
             
         //console.log(data_uri);
         var img_src = location.origin + "/temp_imgs/" + imgName + ".jpg";
-        console.log(img_src);
+        //console.log(img_src);
             
             $(function() {
                 var params = {
@@ -38,7 +38,7 @@ function take_snapshot() {
                     beforeSend: function(xhrObj){
                         // Request headers
                         xhrObj.setRequestHeader("Content-Type","application/json");
-                        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","f7c7a4984cad44d2ab73e8734a1ff233");
+                        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","d72d5dafbf6e4e1cb3693187b56cf8e7");
                     },
                     type: "POST",
                     // Request body
@@ -46,17 +46,17 @@ function take_snapshot() {
                 })
                 .done(function(data) {
                     //alert("success");
-                    console.log(data);
-                    
                     var scores = data[0].scores;
                     
                     var scores_keys = Object.keys(scores);
                     var largest_key = Math.max.apply(null, scores_keys.map(x => scores[x]));
                     var score = scores_keys.reduce((score, key) => { if (scores[key] === largest_key){ score.push(key); } return score; }, []);
                     
+                    books.recommendBooks(score, imgName);
+                    Webcam.reset();
                 })
                 .fail(function() {
-                    alert("error");
+                    alert("Something unexpected occurred. Please, try again later!");
                 });
             });
             
