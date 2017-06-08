@@ -5,7 +5,7 @@ $books = new Books();
 
 $get_categories = $books->get_categories();
 
-$categories_src = '<a href=\'javascript:books.getBooks({category: ""});\' class="a-nostyle">All</a><br />';
+$categories_src = '<a href=\'javascript:books.getBooks({category: "' . $cid . '"});\' class="a-nostyle">All</a><br />';
 for($i=0; $i<count($get_categories); $i++)
 {
 	$cid = $get_categories[$i]["category_id"];
@@ -56,26 +56,7 @@ for($i=0; $i<count($get_categories); $i++)
 
 			<!-- Trigger/Open The Modal -->
 			<a href="https://www.youtube.com/watch?v=1laHtmi-9-M" target="_blank"><button class="help-btn"><span>How it works</span></button></a><br/>
-			<button class="recommend-btn"><span>Get a recommendation</span></button>
-
-			<!-- The Modal -->
-			<article id="books-recomendations-modal" class="modal">
-			  <!-- Modal content -->
-			  <article class="add-book-modal-content">
-					<article class="add-book-modal-header">
-				    <span class="close">&times;</span>
-				    <h3>Get a book recommendation</h3>
-				  </article>
-				  <article class="add-book-modal-body">
-						<div id="my_camera"></div>
-						<div id="results"></div>
-						<!-- A button for taking snaps -->
-						<form>
-							<input type=button value="Take Large Snapshot" onClick="take_snapshot()">
-						</form>
-				  </article>
-			  </article>
-			</article>
+			<a href="recommend-books.php" class="recommend-btn"><span>Get a recommendation</span></a>
 
 		</section>
 
@@ -136,7 +117,6 @@ for($i=0; $i<count($get_categories); $i++)
 
 	<script src="js/script.js" type="text/javascript"></script>
 	<script src="js/books.js" type="text/javascript"></script>
-    <!--<script src="js/webcam.min.js" type="text/javascript"></script>-->
     <script src="js/emotions.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		document.addEventListener("DOMContentLoaded", function(event) {
