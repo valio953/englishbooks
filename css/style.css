@@ -861,6 +861,6 @@ body {
 }
 
 /* Recommodation page */
-#my_camera {
-  magin: 0 auto;
+#sctn_books_recommendation {
+  min-height: 70vh;
 }
