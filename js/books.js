@@ -284,7 +284,6 @@ var books = {
                 category.push(2, 4, 9);
                 break;
         }
-        console.log(category);
         
         var recommendedBookCardSrc = '<h2 class="section-title">We recommend you:</h2>';
         var otherRecommendationsSrc = '<h2 class="section-title">Not your book? Checkout our other recommedations:</h2>', i;
@@ -293,13 +292,10 @@ var books = {
             if (this.readyState == 4 && this.status == 200) {
                 var response = this.responseText;
                 var parsed_response = JSON.parse(response);
-                console.log(parsed_response);
 
                 var count_books = parsed_response.length;
                 var book_recommendation = Math.floor(Math.random()*((count_books - 1)-0+1)+0);;
-                console.log("brecom:" + book_recommendation);
                 var recommendedBook = parsed_response[book_recommendation];
-                console.log("recomBook: " + recommendedBook);
                 
                 recommendedBookCardSrc += '<article class="book-card">';
                 recommendedBookCardSrc += '					<img class="book-cover" src="' + recommendedBook.book_img + '">';
@@ -331,11 +327,7 @@ var books = {
                 
                 document.getElementById("sctn_books_recommendation").innerHTML = recommendedBookCardSrc;
                 
-                
-                parsed_response.splice(book_recommendation, 1);
-                
-                console.log(parsed_response);
-                
+                parsed_response.splice(book_recommendation, 1);                
                 for(i=0; i<parsed_response.length; i++)
                 {
                     otherRecommendationsSrc += '<article class="book-card">';
